@@ -1,0 +1,15 @@
+Dando nome aos bois
+
+segundo o professor, o nome do projeto é Campo Minado
+
+o nome do pacote segue esse padrão:
+
+	br.com.cod3r -> esse é o dominínio da empresa ao contrário
+		  +
+	.cm      -> cm é a abreviação de campo minado
+	
+	ficando = br.com.cod3r.cm
+	
+	o que for sendo criado de pacotes, vai acrescentando após o ponto
+	
+	br.com.cod3r.cm.visao   (pacote responsável pela interface do usuário)

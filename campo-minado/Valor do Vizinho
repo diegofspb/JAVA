@@ -1,0 +1,41 @@
+
+Endentendo como o código de linha x coluna deste projeto se baseou:
+
+     (1,1)  -   1,2   -  (1,3)
+      2,1   -   2,2   -   2,3
+     (3,1)  -   3,2   -  (3,3)  
+     
+     para este exemplo vamos sempre considerar o número central, que é o = 2,2
+     os números que estão entre parênteses = vizinhos na diagonal
+     os números sem parênteres são = vizinhos em cruz
+     
+      - vamos considerar que cada posição é composta por 2 (números/coordenadas) x,y;
+      - x = linha;
+      - y = coluna;
+      - mesma linha = primeiro número for igual, exemplo 1,2 e 1,5
+      - mesma coluna = segundo número for igual, exemplo 3,2 e 7,2
+      
+     
+     * todos os calculos entre duas posições é (x-x) + (y-y) e depois soma-se x e y:
+     
+     exemplo:
+ 			se diminuir 1,1 - 1,2 => (1-1) + (1-2) = 0 + (-1) = Math.abs() = 1 (vizinho não diagonal)
+ 				o número exato seria -1 porém estamos usando o valor absoluto, Math.abs() 				
+
+ 	
+ 	NÚMERO VIZINHO:
+ 	note que os calculos acima pegaram o a posição 2,2 e diminuiu em formato de cruz, ou seja:
+ 	2,2 - o numero de cima, depois - o numero de baixo, - da esquerda - da direita
+ 	qualquer resultado em formato absoluto = 1 o que significa:
+ 			quando o resultado da dimunição utilizando o Math.abs = 1 = vizinho(nao diagonal) de 2,2
+ 			
+ 	NÚMERO DIAGONAL
+ 	continuando a ideia da posição '2,2'
+ 	
+ 	2,2 - 1,3 = (2-1) + (2-3) => 1 + (-1) utilizando o Math.abs() 1+1 = 2
+ 	2,2 - 3,3 = (2-3) + (2-3) => -1 + (-1) utilizando o Math.abs() 1+1 = 2
+ 	2,2 - 1,1 = (2-1) + (2-1) => 1 + 1 = 2
+ 	2,2 - 3,1 = (2-3) + (2-1) => -1 + 1 utilizando o Math.abs() 1+1 = 2
+ 	
+ 	ou seja, diagonal é quando o resultado = 2
+ 	
