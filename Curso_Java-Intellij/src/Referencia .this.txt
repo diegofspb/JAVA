@@ -1,0 +1,24 @@
+Quando falamos sobre retornar uma referência em Java, estamos nos referindo ao fato de que o valor 
+retornado por um método não é o próprio objeto em si, mas sim um ponteiro(endereço) ou uma "referência" para o 
+objeto no espaço de memória onde ele está armazenado.
+
+Em Java, os objetos são armazenados em uma área de memória conhecida como heap. Quando você cria um objeto usando a 
+palavra-chave `new`, a memória é alocada para esse objeto na heap, e a variável que você usa para fazer referência a 
+esse objeto na sua lógica do programa (como `media` por exemplo) contém apenas o endereço onde o objeto está 
+armazenado, não o objeto em si.
+
+Quando um método em Java retorna um objeto, ele não está copiando o objeto inteiro, mas apenas o valor da referência 
+para esse objeto. Isso significa que o objeto em si permanece na mesma posição de memória, e você obtém acesso 
+ao mesmo objeto por meio dessa referência.
+
+Quando o método retorna `this`, ele está retornando uma referência para o próprio objeto em que o método foi chamado. 
+Essa referência permite que você continue manipulando o mesmo objeto, adicionando novos valores e executando outros 
+métodos relacionados a ele.
+
+Essa abordagem é fundamental em Java e outras linguagens de programação orientadas a objetos, pois permite que você 
+trabalhe com objetos grandes sem ter que copiá-los o tempo todo, economizando recursos de memória e tornando a 
+manipulação de objetos mais eficiente.
+
+Em contraste, ao trabalhar com tipos primitivos em Java, como `int`, `double`, `boolean`, etc., 
+o valor real do dado é retornado (por valor) e não uma referência. Por exemplo, ao retornar um `int`, 
+você está retornando o próprio valor inteiro, e não um ponteiro ou referência para a localização de memória do `int`.

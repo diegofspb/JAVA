@@ -1,0 +1,33 @@
+List: List é uma interface em Java,  é representada pela classe 'java.util.List.' 
+representa uma lista ordenada de elementos, onde cada elemento pode ser acessado por um índice. 
+
+Uma lista permite elementos duplicados e pode crescer ou encolher
+<String>: especifica que a lista aprovados irá conter apenas elementos do tipo String.
+
+Exemplo: List<String> aprovados = Arrays.asList("Lu", "Gui", "Luca", "Ana");
+
+(Arrays.asList) é uma implementação da interface <List>.
+(.asList) É um método estático da classe Arrays que converte uma lista de elementos em um ArrayList.
+por isso que fica nesta configuração   'Classe.Método' ou seja 'Arrays.asList'
+obs.: o método 'asList' é estático, por isso que pode ser chamado diretamente sem precisar instanciar a Classe
+	
+Os elementos que estão entre parênteses são os elementos que serão adicionados à lista. 
+
+A diferença entre uma lista de elementos e um ArrayList está relacionada aos conceitos de interface e classe 
+concreta de implementação.
+
+**ArrayList**:
+
+O `ArrayList` é uma classe concreta em Java que implementa a interface `List`. É uma das implementações mais usadas 
+para a interface `List` e faz parte da biblioteca padrão do Java (`java.util.ArrayList`). 
+
+Ao contrário das interfaces, uma classe concreta pode ser instanciada diretamente. Portanto, você pode criar 
+um objeto `ArrayList` diretamente e adicionar elementos a ele. O `ArrayList` é uma lista dinâmica, o que significa 
+que pode crescer ou encolher automaticamente à medida que os elementos são adicionados ou removidos.
+
+A principal diferença entre a interface `List` e o `ArrayList` é que o `ArrayList` é uma implementação específica da 
+lista que fornece a funcionalidade completa exigida pela interface `List`. Existem outras classes concretas que 
+implementam a interface `List`, como `LinkedList`, que têm suas próprias características e desempenhos específicos.
+
+Em resumo, a lista de elementos (`List`) é uma interface que define o contrato para uma lista, enquanto o `ArrayList` é uma 
+classe concreta que fornece a implementação completa dessa lista.

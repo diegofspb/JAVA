@@ -1,0 +1,42 @@
+
+
+Um método estático em Java é um método que pertence à classe em vez de pertencer a uma instância específica dessa classe. 
+Isso significa que você pode chamar um método estático diretamente pela classe, sem precisar criar um objeto da classe antes.
+
+Aqui estão as principais características de um método estático:
+
+1. **Palavra-chave `static`**: Para declarar um método como estático, você precisa usar a palavra-chave `static` antes 
+do tipo de retorno do método. A declaração do método deve ser precedida pela palavra-chave `static`.
+
+2. **Acesso direto**: Como mencionado anteriormente, você pode chamar um método estático diretamente através da classe, 
+sem a necessidade de criar um objeto primeiro. Por exemplo, se você tiver uma classe chamada `MinhaClasse` 
+com um método estático chamado `metodoEstatico()`, você pode chamá-lo assim: `MinhaClasse.metodoEstatico();`.
+
+3. **Acesso a membros estáticos**: Um método estático só pode acessar membros estáticos da classe. 
+Isso significa que ele não pode acessar diretamente campos de instância (variáveis de instância) ou invocar 
+métodos não estáticos, a menos que crie uma instância da classe dentro do método estático.
+
+4. **Não pode usar o operador 'this'**: O operador `this`, que se refere à instância atual da classe, 
+não pode ser usado em um contexto estático. Isso ocorre porque um método estático não está associado a uma 
+instância específica, mas sim à classe em si.
+
+5. **Métodos utilitários**: Os métodos estáticos são comumente usados para criar funções utilitárias, que 
+realizam tarefas independentes da instância da classe, como operações matemáticas, conversões, 
+manipulação de datas, entre outros.
+
+Exemplo de declaração de um método estático:
+
+```java
+public class MinhaClasse {
+    // Método estático
+    public static void metodoEstatico() {
+        // Implementação do método estático
+    }
+}
+```
+
+Exemplo de chamada de um método estático:
+
+```java
+MinhaClasse.metodoEstatico(); // Chamada direta sem criar um objeto
+```
