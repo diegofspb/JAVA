@@ -1,10 +1,6 @@
 package classe;
-
+// esta classe não possui método main, pois ela será utilizada em outra classe que é a AreaCircTeste
 public class AreaCirc {
-
-    double raio;
-    final static double PI = 3.14; // 'pi' foi alterado para 'PI' por ter se tornado uma constante
-
     /*
      * A palavra-chave 'final' é usada para declarar uma constante, ou seja, uma variável cujo valor não pode ser alterado
      * após a sua atribuição inicial. Quando uma variável é declarada como final, não é possível atribuir um novo valor a
@@ -18,7 +14,10 @@ public class AreaCirc {
      * todas as outras instâncias terão acesso ao novo valor.
      * */
 
-    AreaCirc(double raioInicial) {
+    double raio;
+    final static double PI = 3.14; // 'pi' foi alterado para 'PI' por ter se tornado uma constante
+
+    AreaCirc(double raioInicial) { // método construtor
         raio = raioInicial;
     }
 
