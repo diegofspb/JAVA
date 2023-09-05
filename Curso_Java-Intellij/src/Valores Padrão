@@ -1,0 +1,51 @@
+Em Java, valores padrão se referem aos valores que são automaticamente atribuídos a variáveis
+quando elas são declaradas, mas não inicializadas explicitamente com um valor.
+Esses valores padrão são determinados pelo tipo de dado da variável e ajudam a evitar erros de tempo de
+execução relacionados a variáveis não inicializadas.
+
+Aqui estão alguns exemplos de valores padrão para tipos de dados primitivos em Java:
+
+1. **Tipos Numéricos Inteiros:**
+   - `byte`: 0
+   - `short`: 0
+   - `int`: 0
+   - `long`: 0L
+
+2. **Tipos Numéricos de Ponto Flutuante:**
+   - `float`: 0.0f
+   - `double`: 0.0
+
+3. **Tipo Booleano:**
+   - `boolean`: false
+
+4. **Tipo Char:**
+   - `char`: '\u0000' (representando o primeiro código de caracteres da tabela unicode, aqui é um caractere nulo)
+
+5. **Tipos de Referência (Objetos):**
+    - Quando for criado um objeto e não for declarado o valor então:
+            - Para variáveis de referência a objetos (por exemplo, classes personalizadas), o valor padrão é `null`.
+                Isso indica que a variável não está apontando para nenhum objeto.
+
+Por exemplo, se você declarar uma variável `int` sem inicializá-la explicitamente, ela terá o valor padrão de `0`.
+Da mesma forma, se declarar uma variável `boolean` sem definir um valor inicial, ela terá o valor padrão `false`.
+
+Aqui está um exemplo simples em código Java que demonstra o uso de valores padrão:
+
+```java
+public class ExemploValoresPadrao {
+    public static void main(String[] args) {
+        int numero; // 'numero' receberá o valor padrão 0
+        boolean condicao; // 'condicao' receberá o valor padrão false
+
+        System.out.println("Número: " + numero);
+        System.out.println("Condição: " + condicao);
+    }
+}
+```
+Este código imprimirá:
+```
+Número: 0
+Condição: false
+```
+É importante lembrar que é uma boa prática sempre inicializar variáveis antes de usá-las,
+em vez de depender dos valores padrão, para evitar comportamentos inesperados e erros lógicos em seu código.

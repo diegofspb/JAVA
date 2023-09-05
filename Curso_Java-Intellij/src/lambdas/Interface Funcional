@@ -1,0 +1,11 @@
+Interface
+
+	Assinatura ( Entrada x saída)   	 -    Nome     
+	
+			nada -> T(valor)    								 -    Supplier
+			T(valor) -> nada    								 -    Consumer
+			T(valor) -> Tipo(valor)  							 -    Unary Operator
+			T,T (2 paramentros) -> T(valor)    			  		 -    Binary Operator   (tanto entrada e saída mesmo tipo)
+			s -> T  (exemplo: recebe numero e retorna cliente)   -    Function
+			Tipo(valor) -> Boolean    							 -    Predicate
+			

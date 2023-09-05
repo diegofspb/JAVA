@@ -1,0 +1,51 @@
+Em Java, o termo 'Stream' refere-se a uma sequência de elementos que pode ser processada de forma fluente e em tempo real. 
+Essa abstração foi introduzida no Java 8, juntamente com a API de Streams (java.util.stream), 
+que fornece um conjunto de operações funcionais para manipular coleções de dados de forma mais concisa e expressiva.
+
+Aqui estão alguns conceitos-chave relacionados a 'Stream' em Java:
+
+1. Fluxo (Stream): É uma sequência de elementos que oferece suporte a várias operações para executar cálculos agregados 
+ou transformações em seus elementos. Ao contrário das coleções tradicionais, como List ou Set, um Stream não 
+armazena elementos, mas sim os processa em tempo real à medida que eles são fornecidos.
+
+2. Origem do Stream: Um Stream sempre tem uma fonte de dados subjacente, como uma coleção (por exemplo, List, Set), um array, 
+um arquivo ou até mesmo um gerador infinito.
+
+3. Operações de Stream: As operações em Stream podem ser classificadas em duas categorias: 
+				### operações intermediárias e operações terminais.### 
+
+ - As operações intermediárias (por exemplo, map, filter, sorted) permitem transformar ou filtrar os elementos do Stream 
+ e retornam um novo Stream como resultado. 
+
+ - As operações terminais (por exemplo, forEach, collect, reduce) produzem um resultado final a partir dos elementos 
+ do Stream e encerram o fluxo.
+
+4. Operações Lazy: Uma das características importantes dos Streams é que as operações são geralmente executadas de forma 
+preguiçosa (lazy). Isso significa que as operações são adiadas até que o resultado seja necessário. Portanto, as operações 
+podem ser combinadas em uma única etapa de processamento, melhorando a eficiência do código.
+
+5. Encadeamento de Operações: Uma cadeia (pipeline) de operações pode ser criada usando Streams. Isso permite a composição 
+de várias operações intermediárias em um único fluxo de processamento.
+
+Aqui está um exemplo simples de como usar um Stream para calcular a soma dos quadrados dos números pares de uma lista:
+
+```java
+import java.util.Arrays;
+import java.util.List;
+
+public class ExemploStream {
+    public static void main(String[] args) {
+        List<Integer> numeros = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
+
+        int somaDosQuadradosDosPares = numeros.stream()
+                .filter(n -> n % 2 == 0)      // Filtra os números pares
+                .map(n -> n * n)              // Calcula o quadrado de cada número
+                .reduce(0, Integer::sum);     // Soma os quadrados
+
+        System.out.println("Soma dos quadrados dos números pares: " + somaDosQuadradosDosPares);
+    }
+}
+```
+Com o uso de Streams, o código é mais conciso e expressivo, facilitando a manipulação de dados em Java. 
+Além disso, as operações em Stream podem ser otimizadas automaticamente pelo Java para melhor desempenho, o que 
+torna essa abstração uma ferramenta poderosa na programação Java moderna.

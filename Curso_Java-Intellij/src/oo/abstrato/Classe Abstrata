@@ -1,0 +1,27 @@
+Classe Abstrata:
+
+ - mouse = seria a ideia de como é um mouse; 
+ - possui MÉTODOS que podem ser:
+	 - todos os métodos abstratos = métodos sem implementação;
+	 - todos os métodos concretos = todos os métodos definidos = implementados = com corpo;
+	 - parte dos métodos abstratos e parte concreto;
+	 
+**obs.: 
+			 #### uma Classe Abstrata não pode ser instanciada ####
+			 - é usada como super classe para ser HERDADA......
+			 - não tem sentido você criar uma Classe Abstrata que nunca será HERDADA;
+
+
+Classe Concreta:
+
+ - mouse = é realmente um mouse na sua mão;
+ - possui MÉTODOS;
+ - 100% dos métodos implementados, ou seja, os métodos possuem CORPO;
+ - se for implementar uma 'INTERFACE' tem que implementar os métodos da INTERFACE; 
+ - se extender 'extends' de uma classe abstrata com método abstrato não implementado, terá que implementar obrigatoriamente;
+ 
+ 
+Interface:
+
+ - possui MÉTODOS;
+ - 0% dos métodos implementados;
