@@ -1,4 +1,4 @@
-package oo.composicao;
+package oo.exemploVeiculo;
 
 public class Carro {
 
@@ -12,7 +12,7 @@ public class Carro {
 	}	
 	void frear() {
 		motor.fatorInjecao -= 0.4;
-	}	
+	}
 	void ligar() {
 		motor.ligado = true;
 	}

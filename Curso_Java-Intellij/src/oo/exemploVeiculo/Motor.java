@@ -1,4 +1,4 @@
-package oo.composicao;
+package oo.exemploVeiculo;
 
 public class Motor {
 	
@@ -6,7 +6,6 @@ public class Motor {
 	//  que servirão de modelo para quando forem instanciados em outras classes
 	// ao executar as funções da classe Carro que instanciou esta Classe Motor, notei que na verdade
 	// nada aqui na Classe Motor foi alterado
-
 	boolean ligado = false;
 	double fatorInjecao = 1;
 	

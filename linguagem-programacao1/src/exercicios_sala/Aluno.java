@@ -1,3 +1,5 @@
+package exercicios_sala;
+
 import java.util.Scanner;
 
 public class Aluno {

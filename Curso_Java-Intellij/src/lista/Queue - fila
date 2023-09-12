@@ -1,0 +1,58 @@
+`Queue` é uma interface em Java que faz parte do framework de coleções (java.util) e representa uma estrutura de dados de fila.
+Ela estende a interface `Collection` e define um conjunto de métodos para manipular elementos em uma fila,
+seguindo o princípio FIFO (First-In-First-Out), onde o primeiro elemento inserido é o primeiro a ser removido.
+
+A interface `Queue` possui várias implementações na biblioteca padrão do Java, incluindo:
+
+1. **LinkedList**: A classe `LinkedList` pode ser usada para implementar uma fila,
+pois fornece métodos eficientes para adicionar e remover elementos na frente (início) e no final da lista (fim).
+
+2. **ArrayDeque**: A classe `ArrayDeque` também pode ser usada para implementar uma fila,
+ oferecendo um desempenho eficiente para operações de adição e remoção tanto na frente quanto no final da fila.
+
+Alguns métodos importantes definidos na interface `Queue` incluem:
+
+- `add(E e)`: Adiciona um elemento ao final da fila. Se não for possível adicionar o elemento, lança uma exceção.
+
+- `offer(E e)`: Adiciona um elemento ao final da fila. Retorna `true` se a operação foi bem-sucedida, `false` caso contrário.
+
+- `remove()`: Remove e retorna o elemento na frente da fila. Se a fila estiver vazia, lança uma exceção.
+
+- `poll()`: Remove e retorna o elemento na frente da fila. Retorna `null` se a fila estiver vazia.
+
+- `element()`: Retorna o elemento na frente da fila, sem removê-lo. Se a fila estiver vazia, lança uma exceção.
+
+- `peek()`: Retorna o elemento na frente da fila, sem removê-lo. Retorna `null` se a fila estiver vazia.
+
+Aqui está um exemplo simples de como usar a interface `Queue` em Java:
+
+```java
+import java.util.LinkedList;
+import java.util.Queue;
+
+public class ExemploQueue {
+    public static void main(String[] args) {
+
+        Queue<String> fila = new LinkedList<>();
+
+        // Adicionar elementos à fila
+        fila.add("A");
+        fila.add("B");
+        fila.add("C");
+
+        // Exibir os elementos da fila
+        System.out.println("Fila: " + fila); // Saída: Fila: [A, B, C]
+
+        // Remover o elemento da frente da fila
+        String elementoRemovido = fila.poll();
+        System.out.println("Elemento removido: " + elementoRemovido); // Saída: Elemento removido: A
+
+        // Exibir o novo elemento da frente da fila
+        String elementoDaFrente = fila.peek();
+        System.out.println("Elemento da frente: " + elementoDaFrente); // Saída: Elemento da frente: B
+    }
+}
+```
+
+`Queue` é útil em situações em que a ordem de processamento dos elementos é importante e segue a lógica FIFO,
+como na execução de tarefas em filas de processamento, gerenciamento de pedidos ou controle de recursos compartilhados.

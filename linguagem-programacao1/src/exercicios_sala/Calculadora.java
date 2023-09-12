@@ -1,3 +1,5 @@
+package exercicios_sala;
+
 import java.util.Scanner;
 
 public class Calculadora {
@@ -6,7 +8,7 @@ public class Calculadora {
         boolean loop = true;
 
         do{
-            System.out.println("#### Calculadora ####");
+            System.out.println("#### exercicios_sala.Calculadora ####");
             System.out.println("Primeiro número: ");
             double num1 = entrada.nextDouble();
             System.out.println("Segundo número: ");
@@ -41,6 +43,6 @@ public class Calculadora {
 
         }while (loop);
 
-        System.out.println("Finalizando Calculadora");
+        System.out.println("Finalizando exercicios_sala.Calculadora");
     }
 }

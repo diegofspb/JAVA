@@ -1,4 +1,4 @@
-package oo.composicao;
+package oo.exemploCompra;
 
 import java.util.ArrayList;
 
@@ -11,7 +11,6 @@ public class Compra {
 	// a ideia é ter várias classes interagindo entre si
 	
 	//A classe compra também contém um MÉTODO para calculo da compra
-	
 	double obterValorTotal() {
 		double total = 0;
 		

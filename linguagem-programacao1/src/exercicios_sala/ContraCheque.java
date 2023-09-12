@@ -1,3 +1,5 @@
+package exercicios_sala;
+
 public class ContraCheque {
     int matricula;
     String nome;

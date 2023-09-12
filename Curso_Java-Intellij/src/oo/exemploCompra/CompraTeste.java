@@ -1,4 +1,4 @@
-package oo.composicao;
+package oo.exemploCompra;
 
 public class CompraTeste {
 	

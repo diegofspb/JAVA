@@ -1,0 +1,63 @@
+`Deque` (pronunciado "deck") é uma interface em Java que representa uma coleção de elementos onde você pode inserir e
+remover elementos tanto no início quanto no final da coleção. O termo "Deque" é uma abreviação de "Double-ended queue",
+que significa fila de pontas duplas.
+Em outras palavras, uma `Deque` suporta operações de fila (FIFO - First-In-First-Out) e pilha (LIFO - Last-In-First-Out).
+
+A interface `Deque` estende a interface `Queue` e oferece métodos adicionais para manipulação de elementos no
+início e no final da coleção. Alguns dos métodos mais comuns definidos na interface `Deque` incluem:
+
+- `addFirst(E e)`: Adiciona um elemento no início da coleção. Se não for possível adicionar o elemento, lança uma exceção.
+
+- `addLast(E e)`: Adiciona um elemento no final da coleção. Se não for possível adicionar o elemento, lança uma exceção.
+
+- `offerFirst(E e)`: Adiciona um elemento no início da coleção. Retorna `true` se a operação foi bem-sucedida, `false` caso contrário.
+
+- `offerLast(E e)`: Adiciona um elemento no final da coleção. Retorna `true` se a operação foi bem-sucedida, `false` caso contrário.
+
+- `removeFirst()`: Remove e retorna o elemento no início da coleção. Se a coleção estiver vazia, lança uma exceção.
+
+- `removeLast()`: Remove e retorna o elemento no final da coleção. Se a coleção estiver vazia, lança uma exceção.
+
+- `pollFirst()`: Remove e retorna o elemento no início da coleção. Retorna `null` se a coleção estiver vazia.
+
+- `pollLast()`: Remove e retorna o elemento no final da coleção. Retorna `null` se a coleção estiver vazia.
+
+- `getFirst()`: Retorna o elemento no início da coleção, sem removê-lo. Se a coleção estiver vazia, lança uma exceção.
+
+- `getLast()`: Retorna o elemento no final da coleção, sem removê-lo. Se a coleção estiver vazia, lança uma exceção.
+
+- `peekFirst()`: Retorna o elemento no início da coleção, sem removê-lo. Retorna `null` se a coleção estiver vazia.
+
+- `peekLast()`: Retorna o elemento no final da coleção, sem removê-lo. Retorna `null` se a coleção estiver vazia.
+
+Aqui está um exemplo simples de como usar a interface `Deque` em Java:
+
+```java
+import java.util.ArrayDeque;
+import java.util.Deque;
+
+public class ExemploDeque {
+    public static void main(String[] args) {
+        Deque<String> deque = new ArrayDeque<>();
+
+        // Adicionar elementos no início e no final do deque
+        deque.addFirst("A");
+        deque.addLast("B");
+        deque.addFirst("C");
+
+        // Exibir os elementos do deque
+        System.out.println("Deque: " + deque); // Saída: Deque: [C, A, B]
+
+        // Remover elementos do início e do final do deque
+        String elementoRemovidoInicio = deque.pollFirst();
+        String elementoRemovidoFinal = deque.pollLast();
+
+        // Exibir os elementos removidos
+        System.out.println("Elemento removido do início: " + elementoRemovidoInicio); // Saída: Elemento removido do início: C
+        System.out.println("Elemento removido do final: " + elementoRemovidoFinal); // Saída: Elemento removido do final: B
+    }
+}
+```
+
+`Deque` é uma estrutura de dados versátil que pode ser útil em várias situações, como implementar uma fila,
+pilha, ou qualquer outra coleção onde você precisa acessar elementos tanto no início quanto no final de forma eficiente.

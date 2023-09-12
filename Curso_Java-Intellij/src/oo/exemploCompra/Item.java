@@ -1,9 +1,8 @@
-package oo.composicao;
+package oo.exemploCompra;
 
 public class Item {
 	
 	//os dados que compõem um item é nome + qtd + preço
-
 	String nome;
 	int quantidade;
 	double preco;

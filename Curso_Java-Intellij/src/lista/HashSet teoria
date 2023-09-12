@@ -1,0 +1,56 @@
+Em Java, `HashSet` é uma classe que faz parte do framework de coleções da linguagem e é usada para armazenar elementos
+em uma coleção que não permite elementos duplicados. Ela implementa a interface `Set` e é parte da biblioteca padrão Java
+desde a versão 1.2.
+
+Aqui estão algumas características importantes do `HashSet` em Java:
+
+1. **Não permite elementos duplicados:** O principal objetivo do `HashSet` é armazenar elementos únicos.
+Se você tentar adicionar um elemento que já existe na coleção, a operação será ignorada e não haverá duplicatas na coleção.
+
+2. **Não mantém a ordem dos elementos:** O `HashSet` não mantém a ordem de inserção dos elementos.
+Isso significa que os elementos não são armazenados em uma ordem específica, como a ordem de inserção.
+Se você precisar de uma ordem específica, pode usar um `LinkedHashSet`, que mantém a ordem de inserção, ou um `TreeSet`,
+que mantém os elementos em ordem natural ou com base em um comparador personalizado.
+
+3. **Desempenho de busca eficiente:** O `HashSet` é otimizado para operações de busca, adição e remoção de elementos.
+A pesquisa por um elemento em um `HashSet` é muito eficiente, pois utiliza tabelas de hash internamente.
+
+4. **Não sincronizado:** O `HashSet` não é sincronizado por padrão, o que significa que não é seguro para threads concorrentes.
+Se você precisar de uma coleção que seja segura para uso em threads concorrentes, pode usar `Collections.synchronizedSet()`
+para obter uma versão sincronizada de um `HashSet`.
+
+Aqui está um exemplo simples de como criar e usar um `HashSet` em Java:
+
+```java
+import java.util.HashSet;
+import java.util.Set;
+
+public class ExemploHashSet {
+    public static void main(String[] args) {
+
+        Set<String> conjunto = new HashSet<>();
+
+        // Adicionar elementos ao conjunto
+        conjunto.add("Maçã");
+        conjunto.add("Banana");
+        conjunto.add("Laranja");
+        conjunto.add("Maçã"); // Não será adicionada, pois é uma duplicata
+
+        // Imprimir o conjunto
+        System.out.println(conjunto); // Saída: [Banana, Laranja, Maçã]
+
+        // Verificar se um elemento está presente no conjunto
+        boolean contemLaranja = conjunto.contains("Laranja");
+        System.out.println("Contém Laranja? " + contemLaranja); // Saída: true
+
+        // Remover um elemento do conjunto
+        conjunto.remove("Banana");
+
+        // Tamanho do conjunto
+        int tamanho = conjunto.size();
+        System.out.println("Tamanho do conjunto: " + tamanho); // Saída: 2
+    }
+}
+```
+
+Lembre-se de que a ordem dos elementos no conjunto pode variar a cada vez que você o imprime devido à falta de ordenação garantida em um `HashSet`. Se a ordem dos elementos for importante para você, considere o uso de um `LinkedHashSet` ou um `TreeSet` conforme necessário.
