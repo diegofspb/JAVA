@@ -11,8 +11,9 @@ armazena elementos, mas sim os processa em tempo real à medida que eles são fo
 2. Origem do Stream: Um Stream sempre tem uma fonte de dados subjacente, como uma coleção (por exemplo, List, Set), um array, 
 um arquivo ou até mesmo um gerador infinito.
 
-3. Operações de Stream: As operações em Stream podem ser classificadas em duas categorias: 
-				### operações intermediárias e operações terminais.### 
+3. Operações de Stream: As operações em Stream podem ser classificadas em duas categorias:
+
+				### operações intermediárias & operações terminais.###
 
  - As operações intermediárias (por exemplo, map, filter, sorted) permitem transformar ou filtrar os elementos do Stream 
  e retornam um novo Stream como resultado. 

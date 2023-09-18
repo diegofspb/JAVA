@@ -23,5 +23,8 @@ public class OperadorUnario {
 		// .apply() serve para passar o valor inical para função ser executada
 		System.out.println(resultado2);
 		//.compose executa da direita para esquerda
+
+		// para melhor entender é assim: faça isso.andThen(agora faça isso)...
+		// se usar o composer ele vai da direita pra esquerda exemplo: primeiroIsso....
 	}
 }

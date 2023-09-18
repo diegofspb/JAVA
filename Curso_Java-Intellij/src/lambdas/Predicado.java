@@ -10,7 +10,7 @@ o que a função Predicate faz é:
 recebe um valor (T), ou seja, Predicate<T>, verifica uma situação e 
 retorna booleano =  Tipo(valor) -> Boolean 
 
-'isCaro' é a mesma coisa que dizer 'écaro ?' é o nome de uma variável qualquer
+'isCaro' é a mesma coisa que dizer 'é caro ?' é o nome de uma variável qualquer
 'prod' é um parâmetro do tipo <Produto>, é como se automaticamente vc também tivesse 
 instanciando Produto
 e o parâmetro 'prod' é a própria instancia de Produto, ou seja, é o objeto de Produto

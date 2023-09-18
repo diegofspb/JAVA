@@ -58,11 +58,15 @@ valor diferente (10.0, 20.0 e 30.0). O que acontece é o seguinte:
 1.  Na primeira chamada de `adicionar(10.0)`, o valor 10.0 é adicionado ao total e a quantidade é incrementada em 1. 
 	Em seguida, o método `adicionar()` retorna `this`, ou seja, a referência para o objeto `media` original.
 2.  Com a referência ao objeto `media` retornada na primeira chamada, podemos chamar novamente o 
-	método `adicionar(20.0)`. O valor 20.0 é adicionado ao total, a quantidade é incrementada em 1 e, 
-	novamente, o método `adicionar()` retorna `this`, ou seja, a referência para o objeto `media`.
+	método `adicionar(20.0)`. O valor 20.0 é adicionado ao total, a quantidade é incrementada em  + 1, ou seja
+	 10 + 20 e,	novamente, o método `adicionar()` retorna `this`, ou seja, a referência para o objeto `media`.
 3. Agora, com a referência ao objeto `media` retornada na segunda chamada, 
-chamamos o método `adicionar(30.0)`. O valor 30.0 é adicionado ao total, a quantidade é incrementada em 1 e, 
+chamamos o método `adicionar(30.0)`. O valor 30.0 é adicionado ao total, a quantidade é incrementada em 1 ficando = 3 e,
 mais uma vez, o método `adicionar()` retorna `this`, ou seja, a referência para o objeto `media`.
+
+após realizar as 3 chamadas, o contator 'quantidade' = 3 e o somatório das médias => total = 10 + 20 + 30 = 60
+
+quando chamar o getValor() ele vai fazer 60/3 = 20
 
 O resultado desse encadeamento é que os três valores foram adicionados ao objeto `media`, e você pode 
 continuar encadeando mais chamadas de métodos da classe `Media` se necessário.

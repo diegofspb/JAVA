@@ -21,6 +21,7 @@ public class Reduce3 {
 		Function<Aluno, Double> apenasNota = a -> a.nota;
 		BiFunction<Media, Double, Media> calcularMedia = (media, nota) -> media.adicionar(nota);
 		BinaryOperator<Media> combinarMedia = (m1, m2) -> Media.combinar(m1, m2);
+
 		
 		Media media = alunos.stream()
 			.filter(aprovado)

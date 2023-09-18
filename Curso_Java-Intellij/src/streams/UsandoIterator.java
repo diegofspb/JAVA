@@ -5,7 +5,7 @@ import java.util.Iterator;
 import java.util.List;
 import java.util.stream.Stream;
 
-public class imprimindoObjetos {
+public class UsandoIterator {
 
 	public static void main(String[] args) {
 		
@@ -32,12 +32,12 @@ public class imprimindoObjetos {
 		 * percorre sequencialmente os elementos de uma coleção sem expor a estrutura interna. 
 		 */
 		System.out.println("\nUsando Iterator"); 
-		Iterator<String> iterator = aprovados.iterator(); //iteração usando interface Iterator
-		// a INTERFACE ITERATOR possui 3 métodos, abaixo apenas exemplo de 1 que é o .hasNext()
-		//iterator.hasNext() retorna valor booleano true se ainda tiver algum elemento a ser iterado
-		// obs.: Iterator é a interface, mas neste exemplo usamos o iterator como nome da classe = nao confundi
-		while(iterator.hasNext()) {
-			System.out.println(iterator.next());
+		Iterator<String> it = aprovados.iterator(); //iteração usando interface Iterator
+		// a INTERFACE ITERATOR o método .hasNext() que retorna booleano e o .next() que imprime o valor da variável
+		// .hasNext() retorna valor booleano true se ainda tiver algum elemento a ser iterado
+		// while espera um valor booleano, por isso o .hasNext() resolveu muito bem
+		while(it.hasNext()) {
+			System.out.println(it.next());
 		}
 		
 		System.out.println("\nUsando Stream...");

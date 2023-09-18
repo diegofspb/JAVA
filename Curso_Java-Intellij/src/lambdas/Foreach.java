@@ -7,25 +7,29 @@ import java.util.List;
 public class Foreach {
 	public static void main(String[] args) {		
      // Classe <List> do tipo string (String) com nome aprovados que recebe uma classe (Arrays) que auxilia a criar uma lista
-		List<String> aprovados = Arrays.asList("Ana", "Bia","Lia", "Gui" );
+		List<String> aprovados = Arrays.asList(" Ana ", " Bia "," Lia ", " Gui " );
+
 	 // Executando um 'Foreach' na forma TRADICIONAL
 		for(String nome: aprovados) {
 			System.out.println(nome);
 		}
-	 // Executando um 'Foreach' junto com função lambda
-		System.out.println("forEach + Funcao lambda - 01");		
+	//O foreach abaixo aprovados.forEach pertence a classe 'List', ou seja, a lista aprovados já possui ela
+	// Executando 'foreach' junto com uma função lambda
+		System.out.println(" forEach + Funcao lambda - 01 ");
 		aprovados.forEach(nome-> System.out.println(nome));
+
 	// executando um 'Method Reference' que torna o código ainda menor:
-		System.out.println("\n Method Reference - usando System.out::println");
+		System.out.println(" \n Method Reference - usando System.out::println ");
 		aprovados.forEach(System.out::println); // não dá para concatenar com outras palavras ou variáveis
-		//esse método acima busca uma função string da classe, aqui não encontrei classe importada então ele exibe só o loop
-		System.out.println("forEach + Funcao lambda - 02");
+
+	//esse método acima busca uma função string da classe, aqui não encontrei classe importada então ele exibe só o loop
+		System.out.println(" forEach + Funcao lambda - 02 ");
 		aprovados.forEach(nome -> meuImprimir(nome));
-		System.out.println("\n Method Reference - 02");			
+		System.out.println(" \n Method Reference - 02 ");
 		aprovados.forEach(Foreach::meuImprimir);
 		}
 	// fora do método main, foi criado um outro método apenas para imprimir na tela um texto com um parâmetro em formato de String 
 	static void meuImprimir(String nome) {
-		System.out.println("oi meu nome eh = " + nome);	
+		System.out.println(" oi meu nome eh = " + nome);
 	}
 }

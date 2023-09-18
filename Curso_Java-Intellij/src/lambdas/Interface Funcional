@@ -15,21 +15,26 @@ Alguns dos tipos mais comuns de interfaces funcionais em `java.util.function` in
 
 1. **Consumer (`Consumer<T>`)**: Aceita um argumento do tipo `T` e não retorna nada.
 É usado quando você deseja executar uma ação em um objeto, como imprimir ou processar seus dados.
+o método variavel.foreach() é do tipo consumer, pois não alterada nada
 
 2. **Supplier (`Supplier<T>`)**: Não aceita nenhum argumento e retorna um valor do tipo `T`.
-É usado quando você deseja fornecer um valor.
+É usado quando você deseja fornecer um valor.  OBS.: usa o 'variavel.get()'
 
 3. **Function (`Function<T, R>`)**: Aceita um argumento do tipo `T` e retorna um valor do tipo `R`.
-É usado quando você deseja mapear um objeto de um tipo para outro.
+exemplo: recebe um numero e retorna uma string pra saber se um número é par ou impar, exemplo:
+Function<Integer, String> parOuImpar = numero -> numero % 2 == 0 ? "Par":"impar";
+Obs....: utiliza o aplly(), exemplo: 'System.out.println(parOuImpar.apply())'
 
 4. **Predicate (`Predicate<T>`)**: Aceita um argumento do tipo `T` e retorna um valor booleano.
-É usado para verificar uma condição em um objeto.
+É usado para verificar uma condição em um objeto. --> utiliza: 'variavel.test()'
 
 5. **BiFunction (`BiFunction<T, U, R>`)**: Aceita dois argumentos, um do tipo `T` e outro do tipo `U`,
 e retorna um valor do tipo `R`. É usado para mapear dois objetos em um terceiro.
 
 6. **UnaryOperator (`UnaryOperator<T>`)**: Uma especialização da interface `Function` onde o argumento
 e o valor de retorno são do mesmo tipo `T`. É usado quando você deseja realizar uma operação de transformação no mesmo tipo de objeto.
+exemplo: UnaryOperator<Integer> maisDois = n -> n+2;
+utiliza-se o 'variavel.apply()'
 
 7. **BinaryOperator (`BinaryOperator<T>`)**: Uma especialização da interface `BiFunction` onde os dois argumentos e
 o valor de retorno são do mesmo tipo `T`. É usado quando você deseja realizar uma operação binária no mesmo tipo de objeto.

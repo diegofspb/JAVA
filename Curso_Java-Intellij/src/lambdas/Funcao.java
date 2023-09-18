@@ -1,9 +1,7 @@
 package lambdas;
-
 import java.util.function.Function;
 
 public class Funcao {
-
 	public static void main(String[] args) {
 		// ao digitar Function + crt ele mostrou isso Function<T, R>
 		// T = tipo e R = resultado, ou seja, T é o valor que será utilizado e R é o que terá de resposta
