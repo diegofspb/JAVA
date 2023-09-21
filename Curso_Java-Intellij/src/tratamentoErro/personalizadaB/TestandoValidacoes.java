@@ -1,6 +1,6 @@
-package excecao.personalizadaB;
+package tratamentoErro.personalizadaB;
 
-import excecao.Aluno; // import da classe Aluno para poder usá-la, pois está em outro pacote
+import tratamentoErro.Aluno; // import da classe Aluno para poder usá-la, pois está em outro pacote
 
 public class TestandoValidacoes {
 

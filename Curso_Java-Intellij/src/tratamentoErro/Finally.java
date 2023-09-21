@@ -1,4 +1,4 @@
-package excecao;
+package tratamentoErro;
 
 import java.util.Scanner;
 

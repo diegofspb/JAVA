@@ -1,4 +1,4 @@
-package excecao.personalizadaA;
+package tratamentoErro.personalizadaA;
 
 
 @SuppressWarnings("serial")

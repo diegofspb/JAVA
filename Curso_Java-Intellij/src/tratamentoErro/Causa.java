@@ -1,4 +1,4 @@
-package excecao;
+package tratamentoErro;
 
 public class Causa {
 

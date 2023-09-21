@@ -1,6 +1,6 @@
-package excecao.personalizadaB;
+package tratamentoErro.personalizadaB;
 
-import excecao.Aluno;
+import tratamentoErro.Aluno;
 
 public class Validar {
 

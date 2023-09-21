@@ -5,7 +5,6 @@ import java.util.Comparator;
 import java.util.List;
 
 public class MinMax {
-
 	public static void main(String[] args) {
 		
 		Aluno a1 = new Aluno("Ana", 7.1);
@@ -14,7 +13,7 @@ public class MinMax {
 		Aluno a4 = new Aluno("GAbi", 10.1);
 		
 		List<Aluno> alunos = Arrays.asList(a1, a2, a3, a4);
-		
+//Comparator<Integer> comparador = (aluno1,aluno2) -> b.compareTo(a);    isso aqui substitui o de baixo, porém o exemplo abaixo é de melhor entendimento
 		Comparator<Aluno> melhorNota = (aluno1,aluno2) -> {
 			if (aluno1.nota > aluno2.nota) return 1; //caso a nota do aluno1 for maior que aluno2 = retornar 1
 			if (aluno1.nota < aluno2.nota) return -1; //caso a nota do aluno1 for menor  que aluno2 = retornar -1

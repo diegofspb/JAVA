@@ -1,6 +1,6 @@
-package excecao.personalizadaA;
+package tratamentoErro.personalizadaA;
 
-import excecao.Aluno; // import da classe Aluno para poder usá-la, pois está em outro pacote
+import tratamentoErro.Aluno; // import da classe Aluno que está fora da package para poder usá-la
 
 public class TestandoValidacoes {
 
@@ -9,9 +9,8 @@ public class TestandoValidacoes {
 		
 		try {
 			Aluno aluno = new Aluno("  ", -7);		
-			Validar.alunoValidado(aluno); //alunoValidado é o nome da subclasse da classe Validar
+			Validar.alunoValidado(aluno); //alunoValidado é o nome da subclasse da classe Validar, note que não foi preciso instanciar a classe Validar (veja explicação na classe Validar)
 		} catch (StringVaziaException e) { // StringVaziaException é o nome da exceção personalizada que criamos
-			// TODO Auto-generated catch block
 			System.out.println(e.getMessage());
 		} catch (NumeroForaIntevaloException | IllegalArgumentException e) {
 			System.out.println(e.getMessage());

@@ -1,7 +1,6 @@
-package excecao;
+package tratamentoErro;
 
 public class Basico {
-	
 	public static void main(String[] args) {
 // note que se vc usar o catch vc substitui o erro por uma mensagem mais clara ou uma saída para o erro
 // o catch também pode calar todos os erros, isso não é bom, mas todo o código abaixo apresenta erro 
@@ -10,7 +9,7 @@ public class Basico {
 		
 		try {
 			imprimirNomedoAluno(a1);
-		}catch(Exception excecao) { //TIPO Exception Nome: excecao (pode ser qualquer nome)
+		}catch(Exception NomeExcecao) { //Exception é o tipo da exceção + 'nome da excecao' (pode ser qualquer nome)
 			System.out.println("Erro ao imprimir nome do usuario");
 		}
 		
@@ -19,7 +18,7 @@ public class Basico {
 		} catch (ArithmeticException e) {  //aqui tipo da exeção foi copiado da própria mensagem de erro, veja abaixo esse nome
 			// TODO Auto-generated catch block
 			// e.printStackTrace(); se deixar assim ele exibe ainda o erro, porém mais resumido
-			System.out.println("Ocorreu um erro: " + e.getMessage());
+			System.out.println("Ocorreu mais um erro: " + e.getMessage());
 		// e.getMessage() ele exibe só o tipo do erro, ou seja, a mensagem de erro que seria exibido de forma resumida com
 		// o e.printStackTrace(); agora pode ser ainda mais resumida e estilizada com uso do e.get(Message()) 
 		}
