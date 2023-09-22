@@ -12,7 +12,7 @@ public class ChecadaVsNaoChecada {
 			System.out.println("erro da função geraErrro2() " + e.getMessage());
 		}
 
-		geraErro1(); // aqui o erro não precisou ser tratado (RuntimeException) e o código não 'reclamou' = linha vermelha
+		geraErro1(); // aqui o erro não precisou ser tratado (RuntimeException) e o código não 'reclamou'
 		
 		System.out.println("Fim !");
 	}

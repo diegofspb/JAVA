@@ -4,9 +4,8 @@ import tratamentoErro.Aluno;
 
 public class Validar {
 
-	private Validar() { // tornou o método construtor privado para que nenhuma outra classe possa instanciar esta classe Validar()
+	private Validar() {} // tornou o método construtor privado para que nenhuma outra classe possa instanciar esta classe Validar()
 
-	}
 	//A escolha de tornar o método alunoValidado estático permite que você chame este método diretamente na classe Validar sem precisar criar uma instância da classe.
 	public static void alunoValidado(Aluno aluno) {
 		if(aluno == null) {

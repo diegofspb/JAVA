@@ -1,4 +1,4 @@
-package testes_treinamento;
+package treinamento;
 
 import java.util.Objects;
 
