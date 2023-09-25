@@ -1,0 +1,69 @@
+Em Java, os generics (ou genéricos) é um recurso poderoso que permite que você escreva classes, interfaces e métodos que podem trabalhar com
+tipos específicos de maneira flexível e segura em termos de tipo.
+
+Os generics foram introduzidos no Java 5 para melhorar a segurança de tipo em tempo de compilação e promover a reutilização de código.
+
+Aqui estão alguns conceitos-chave relacionados aos generics em Java:
+
+1. **Tipos Genéricos**: Em vez de usar tipos específicos (por exemplo, `String`, `Integer`, etc.), você pode usar tipos genéricos como `T`, `E`, `K`, `V`, etc.,
+ para criar classes e métodos que funcionem com qualquer tipo.
+
+2. **Classe Genérica**: Você pode criar uma classe genérica definindo um ou mais parâmetros de tipo entre colchetes angulares (`<>`) ao definir a classe. Por exemplo:
+
+   ```java
+   public class Caixa<T> {
+       private T valor;
+
+       public void setValor(T valor) {
+           this.valor = valor;
+       }
+
+       public T getValor() {
+           return valor;
+       }
+   }
+   ```
+
+   Neste exemplo, `T` é o parâmetro de tipo que representa o tipo do valor armazenado na `Caixa`.
+
+3. **Método Genérico**: Além de classes genéricas, você pode criar métodos genéricos que usam parâmetros de tipo.
+Isso permite que você escreva métodos que funcionem com tipos genéricos. Por exemplo:
+
+   ```java
+   public <T> T retornaElemento(T[] array, int indice) {
+       return array[indice];
+   }
+   ```
+
+   Neste caso, `<T>` é o parâmetro de tipo do método `retornaElemento`, e ele permite que o método funcione com arrays de qualquer tipo.
+
+4. **Restrições (Bounds)**: Você pode impor restrições nos parâmetros de tipo usando a palavra-chave `extends`.
+Por exemplo, você pode criar um método genérico que aceita apenas tipos que sejam subtipos de uma classe específica:
+
+   ```java
+   public <T extends Number> double somaNumeros(T numero1, T numero2) {
+       return numero1.doubleValue() + numero2.doubleValue();
+   }
+   ```
+
+   Neste caso, `T` deve ser uma subclasse de `Number`.
+
+5. **Casting Implícito**: O uso de generics permite evitar a necessidade de casting explícito ao recuperar valores de contêineres genéricos, tornando o
+código mais seguro e legível.
+
+6. **Inferência de Tipo**: A inferência de tipo (Type Inference) permite que o compilador deduza o tipo genérico com base no contexto,
+tornando a sintaxe mais concisa. Por exemplo:
+
+   ```java
+   Caixa<Integer> caixa = new Caixa<>();
+   ```
+
+   Aqui, o compilador deduz automaticamente que `T` é `Integer` com base no tipo da variável `caixa`.
+
+7. **Erasure**: Embora os generics forneçam segurança de tipo em tempo de compilação, eles são "apagados" (erased) em tempo de execução.
+Isso significa que, em tempo de execução, as informações sobre os tipos genéricos são removidas, o que é conhecido como "erasure".
+ Isso pode causar problemas se você precisar de informações de tipo específicas em tempo de execução.
+
+Em resumo, os generics em Java são uma ferramenta poderosa para escrever código genérico e reutilizável,
+fornecendo segurança de tipo em tempo de compilação. Eles são amplamente usados em coleções (como `ArrayList`, `HashMap`, etc.) e
+em muitas bibliotecas e estruturas de código Java para criar código mais robusto e flexível.
