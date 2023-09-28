@@ -1,0 +1,26 @@
+
+No contexto do Java Persistence API (JPA) e da persistência de dados em um ambiente de persistência, como um banco de dados,
+o termo "estado gerenciado" se refere ao estado de um objeto que está sendo gerenciado por um EntityManager.
+
+Quando um objeto está em um estado gerenciado, significa que o EntityManager está ciente desse objeto e está rastreando suas mudanças.
+Isso permite que o EntityManager controle a sincronização das mudanças no objeto com o banco de dados.
+Em outras palavras, o EntityManager é capaz de detectar alterações feitas no objeto e aplicá-las ao banco de dados quando uma transação for confirmada.
+
+Existem três principais estados de objetos em um ambiente de persistência JPA:
+
+1. Estado Gerenciado (Managed):
+    O objeto está sendo gerenciado por um EntityManager.
+    Quaisquer mudanças feitas no objeto serão rastreadas e podem ser sincronizadas com o banco de dados quando a transação for confirmada.
+
+2. Estado Transiente (Transient):
+    O objeto não está associado a um EntityManager.
+    Isso geralmente ocorre quando um novo objeto é criado usando o operador `new`, mas ainda não foi persistido no banco de dados.
+
+3. Estado Desanexado (Detached):
+    O objeto já foi gerenciado por um EntityManager em algum momento, mas não está mais associado a ele.
+    Isso pode acontecer quando a transação é encerrada ou o objeto é explicitamente "desanexado" do EntityManager.
+
+Em resumo, o "estado gerenciado" é o estado de um objeto quando ele está sob o controle de um EntityManager JPA e
+pode ser facilmente persistido e sincronizado com o banco de dados.
+Isso permite que o JPA ofereça funcionalidades como detecção de mudanças e gerenciamento de transações para
+facilitar a manipulação de dados no banco de dados de forma eficiente e consistente.

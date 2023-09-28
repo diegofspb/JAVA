@@ -12,6 +12,15 @@ public class Usuario {
     private String nome;
     private String email;
 
+    public Usuario() {
+        /*
+            Construtor padrão vazio
+            O Hibernate precisa de um construtor sem argumentos para criar instâncias da classe ao recuperar dados do banco de dados.
+            se não tiver este construtor vazio, não funciona
+         */
+    }
+
+
     public Usuario(String nome, String email) {
         this.nome = nome;
         this.email = email;

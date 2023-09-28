@@ -1,0 +1,35 @@
+
+O acrônimo "DAO" significa "Data Access Object" em Java.
+
+É um padrão de projeto (design pattern) que é usado para separar:
+
+        - A lógica de acesso a dados do restante da aplicação.
+
+
+O objetivo principal do padrão DAO é fornecer uma camada de abstração entre a aplicação e a fonte de dados,
+seja ela um banco de dados, um serviço web, ou qualquer outro mecanismo de armazenamento de dados.
+
+O padrão DAO geralmente consiste em uma interface ou classe que define métodos para acessar, criar, atualizar e excluir objetos de dados.
+Essa interface ou classe atua como uma "ponte" entre a aplicação e o sistema de armazenamento de dados, tornando o acesso aos dados mais modular e desacoplado.
+
+Alguns benefícios do padrão DAO incluem:
+
+1. **Separação de Responsabilidades:**
+    O DAO separa a lógica de acesso a dados da lógica de negócios da aplicação, tornando o código mais organizado e fácil de manter.
+
+2. **Reutilização de Código:**
+    Uma vez que a lógica de acesso a dados é encapsulada no DAO, ela pode ser reutilizada em várias partes da aplicação.
+
+3. **Flexibilidade:**
+    O DAO permite que você mude a implementação do acesso a dados sem afetar o restante da aplicação. Por exemplo, você pode mudar de um banco de dados relacional para um banco de dados NoSQL sem modificar o código de negócios.
+
+4. **Testabilidade:**
+    É mais fácil escrever testes unitários para a lógica de negócios da aplicação, pois você pode criar mock objects para simular o comportamento do DAO.
+
+5. **Segurança:**
+    O DAO também pode ser usado para encapsular consultas SQL ou lógica de acesso a dados sensíveis, ajudando a proteger contra ataques de injeção de SQL, por exemplo.
+
+A implementação do DAO pode variar dependendo das necessidades da aplicação e do sistema de armazenamento de dados,
+mas a ideia geral é criar uma camada de abstração que facilita o acesso aos dados de maneira controlada e organizada.
+
+É um conceito amplamente usado em desenvolvimento de software, especialmente em aplicativos Java EE (Enterprise Edition) que interagem com bancos de dados e outras fontes de dados.
