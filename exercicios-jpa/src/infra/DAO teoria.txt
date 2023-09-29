@@ -1,10 +1,7 @@
 
 O acrônimo "DAO" significa "Data Access Object" em Java.
 
-É um padrão de projeto (design pattern) que é usado para separar:
-
-        - A lógica de acesso a dados do restante da aplicação.
-
+É um padrão de projeto (design pattern) que é usado para separar a lógica de acesso a dados do restante da aplicação.
 
 O objetivo principal do padrão DAO é fornecer uma camada de abstração entre a aplicação e a fonte de dados,
 seja ela um banco de dados, um serviço web, ou qualquer outro mecanismo de armazenamento de dados.
