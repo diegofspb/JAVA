@@ -2,7 +2,7 @@ package Modelo.basico;
 
 import javax.persistence.*;
 
-@Entity
+@Entity // indica que esta classe (objeto) será persistido(salvo) no banco de dados
 @Table(name = "produtos")
 public class Produto {
     @Id

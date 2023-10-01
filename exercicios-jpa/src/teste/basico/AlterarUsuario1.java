@@ -5,7 +5,7 @@ import Modelo.basico.Usuario;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.Persistence;
-
+// todo código abaixo não foi utilizado o método DAO
 public class AlterarUsuario1 {
     public static void main(String[] args) {
         EntityManagerFactory emf = Persistence.createEntityManagerFactory("exercicios-jpa");
@@ -31,12 +31,10 @@ public class AlterarUsuario1 {
         */
 
         em.getTransaction().commit(); // é um método de confirmação
-
         /*
             Esta linha confirma a transação, ou seja, as alterações feitas no banco de dados durante a transação são efetivadas.
             Se ocorrer algum erro durante a transação, você pode chamar rollback() em vez de commit() para desfazer as alterações.
         */
-
         em.close();
         emf.close();
     }

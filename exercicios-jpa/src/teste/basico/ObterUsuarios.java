@@ -14,7 +14,7 @@ public class ObterUsuarios {
         EntityManager em = emf.createEntityManager();
 
         String jpql = "SELECT u from Usuario u";
-        TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class);
+        TypedQuery<Usuario> query = em.createQuery(jpql, Usuario.class); // Query tipada, ou seja,
         query.setMaxResults(5); // máximo de 5 resultados, isso evita quebrar o sistema quando a tabela é gigante
 
         List<Usuario> usuarios = query.getResultList();

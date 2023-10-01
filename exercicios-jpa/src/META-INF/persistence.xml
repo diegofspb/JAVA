@@ -9,6 +9,8 @@
         <provider>org.hibernate.jpa.HibernatePersistenceProvider</provider>
         <class>Modelo.basico.Usuario</class>
         <class>Modelo.basico.Produto</class>
+        <class>Modelo.umPraUm.Cliente</class>
+        <class>Modelo.umPraUm.Assento</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver"

@@ -1,0 +1,47 @@
+
+        ##### ORM = Mapeamento Objeto-Relacional (Object-Relational Mapping, em inglês) #####
+
+é uma técnica de programação que permite mapear objetos orientados a objetos para estruturas de dados relacionais, como tabelas em um banco de dados relacional.
+O principal objetivo do ORM é simplificar o processo de interação entre um programa orientado a objetos e um banco de dados relacional,
+tornando-o mais eficiente e orientado a objetos.
+
+Aqui estão alguns conceitos-chave relacionados ao ORM:
+
+1. **Mapeamento de Objeto para Tabela**:
+
+    O ORM mapeia classes e seus atributos para tabelas e colunas no banco de dados.
+    Por exemplo, uma classe `Usuario` com atributos como `id`, `nome` e `email` pode ser mapeada para uma tabela `usuarios` com colunas correspondentes.
+
+2. **Mapeamento de Relacionamentos**:
+
+    O ORM também lida com o mapeamento de relacionamentos entre objetos.
+    Por exemplo, se uma classe `Pedido` possui uma referência a uma classe `Cliente`,
+    o ORM mapeará isso para uma chave estrangeira na tabela de pedidos que se relaciona com a tabela de clientes.
+
+3. **Consulta Orientada a Objetos**:
+
+    Com o ORM, você pode executar consultas usando uma linguagem de consulta orientada a objetos em vez de escrever SQL direto.
+    Isso permite que você use métodos e propriedades de classes e objetos para buscar e manipular dados,
+    tornando o código mais intuitivo e menos propenso a erros.
+
+4. **Abstração do Banco de Dados**:
+
+    ORM fornece uma camada de abstração sobre o banco de dados, significa que você pode escrever código de maneira independente do banco de dados subjacente.
+    Você pode trocar de banco de dados sem alterar significativamente seu código, desde que o ORM ofereça suporte ao novo banco de dados.
+
+5. **Manutenção Simplificada**:
+
+    ORM pode simplificar a manutenção do código, uma vez que você lida principalmente com objetos e classes em vez de SQL direto.
+    Isso pode tornar as alterações no esquema do banco de dados menos impactantes no código do aplicativo.
+
+6. **Eficiência e Desempenho**:
+
+    Embora ORM ofereça muitos benefícios, é importante usá-lo com cuidado para garantir que as consultas geradas sejam eficientes.
+    Às vezes, é necessário otimizar consultas geradas pelo ORM para garantir um bom desempenho.
+
+Alguns exemplos populares de frameworks ORM em Java incluem Hibernate, EclipseLink e JPA (Java Persistence API),
+que é uma especificação de ORM para Java. Em outras linguagens de programação, existem outros ORM amplamente utilizados,
+como Entity Framework para C# e Django ORM para Python.
+
+Em resumo, o ORM é uma técnica poderosa que simplifica a interação entre objetos de programa e bancos de dados relacionais,
+tornando o desenvolvimento de aplicativos mais eficiente e orientado a objetos.
