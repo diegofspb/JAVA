@@ -11,6 +11,8 @@
         <class>Modelo.basico.Produto</class>
         <class>Modelo.umPraUm.Cliente</class>
         <class>Modelo.umPraUm.Assento</class>
+        <class>Modelo.umPraUm.Pedido</class>
+        <class>Modelo.umPraUm.ItemPedido</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver"

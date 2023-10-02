@@ -1,0 +1,24 @@
+Classe / Tabela - Pedido:
+        Possui 2 atributos:
+                data;
+                Lista de Itens;
+
+Classe / Tabela - ItemPedido:
+        Possui 4 atributos:
+                            Pedido (FK)
+                            Produto (FK)
+                            Quantidade
+                            Preço
+NovoPedido:
+
+            Instancia-se o pedido  = data     -> já está automático no método construtor de 'Pedido' com 'new date()';
+            Instancia-se o produto = nome + preço;
+            Instancia-se o ItemPedido com nome 'item' = (pedido + produto + quantidade)      -> no produto já foi o preço
+
+DAO:
+        dao.abrirT()    -> inicia a conexão com o banco de dados
+                    .incluir(produto)  -> inclui o produto na tabela 'Produto'
+                    .incluir(pedido) -> inclui o pedido na tabela 'Pedido'
+                    .incluir(item) -> inclui o item na tabela ItemPedido que ficou 'itempedido' por padrão já que usei @Table(name= "nome_personalizado")
+                    .fecharT()
+                    .fechar();

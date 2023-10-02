@@ -6,10 +6,12 @@ import javax.persistence.Persistence;
 import javax.persistence.TypedQuery;
 import java.util.List;
 
-public class DAO<E> {
+public class DAO<E> {  // uso do 'generics' lembrando que generics só pode ser utilizado para criar: Classes e Métodos
     private static EntityManagerFactory emf;
     private static EntityManager em;
-    private Class<E> classe; //atributo com o nome 'classe' que é do tipo Generics e é também do tipo Classe
+    private Class<E> classe; // Class foi para especificar que o generics <E>, após instancia o DAO<E> será uma classe Class<E> classe, se deixar só <E> classe seria um atributo qualquer
+    // exemplo CERTO: Class<E> classe -> após instancia de Usuario usuario1 -> Class<Usuario> usuario1 -> aqui o atributo é a classe 'Usuario' representado pelo nome usuario1
+    // exemplo ERRADO: se fosse <E> classe -> após instancia de Usuario usuario1 -> Usuario usuario1 -> aqui o atributo é usuario1 do tipo Usuario (ERRADO)
 
     static { // tudo que estiver neste bloco será executado 1 única vez quando a Classe for chamada/instanciada
         try {
@@ -21,9 +23,9 @@ public class DAO<E> {
     public DAO(){ // **** MÉTODO CONSTRUTOR 1 ****
         this(null);
     }
-    // considerando o método construtor 1 acima, de inicio pensei que era obrigação por causa do Hibernate,
+    // considerando o método construtor 1 acima, de inicio pensei que era apenas obrigação por causa do Hibernate de criar 1 método construtor 'sem argumentos'
     // porém o professor informou que é para tornar possível instanciar esta classe sem obrigação
-    // de incluir uma classe na instancia, conforme o método construtor 2 que está abaixo
+    // de incluir uma classe na instancia, já que esta classe DAO<E> só pode ser instanciada com qualquer classe E do tipo generics
 
     public DAO(Class<E> classe){ // **** MÉTODO CONSTRUTOR 2 ****
         this.classe = classe;
@@ -38,6 +40,7 @@ public class DAO<E> {
         return this; // transforma em método BUILDER e permite encadeamento de funções
     }
     public DAO<E> incluir(E entidade){ // incluir/adicionar um registro no banco de dados
+        // O tipo de retorno do método é DAO<E>, o que significa que o método retorna uma instância da classe DAO parametrizada com o tipo genérico E.
         em.persist(entidade);
         return this; // transforma em método BUILDER e permite encadeamento de funções
     }
