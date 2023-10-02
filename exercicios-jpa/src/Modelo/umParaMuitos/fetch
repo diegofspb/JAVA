@@ -1,0 +1,27 @@
+O atributo `fetch` é usado para determinar como as associações entre entidades são carregadas do banco de dados quando uma consulta é executada.
+
+Exemplo:
+            `@ManyToOne(fetch = FetchType.EAGER)` está especificando o tipo de carregamento para uma associação muitos-para-um (many-to-one).
+
+- `@ManyToOne`:
+
+        Isso é uma anotação que indica que a associação é do tipo muitos-para-um.
+        Isso significa que uma entidade possui uma referência para outra entidade, e várias instâncias da primeira entidade podem se referir à mesma instância da segunda entidade.
+
+- (fetch = FetchType.EAGER):
+
+        Esta parte define o modo de carregamento para a associação.
+        No caso de `FetchType.EAGER`, o JPA carregará automaticamente a entidade associada (no lado "um" da associação)
+        quando a entidade principal (no lado "muitos") for carregada.
+        Isso significa que os dados relacionados serão recuperados do banco de dados imediatamente, junto com a entidade principal,
+        sem a necessidade de uma consulta adicional quando você acessar a associação.
+
+- (fetch = FetchType.LAZY):
+
+        é o oposto do `EAGER`.
+        Com `FetchType.LAZY`, a entidade associada só será carregada do banco de dados quando você acessar explicitamente a associação pela primeira vez.
+        Isso pode ser mais eficiente em termos de desempenho se você não precisar sempre dos dados associados.
+
+A escolha entre `EAGER` e `LAZY` depende das necessidades específicas do seu aplicativo e dos requisitos de desempenho.
+O uso de `EAGER` pode levar a consultas adicionais ao banco de dados e ao carregamento de mais dados do que o necessário,
+enquanto `LAZY` pode resultar em consultas adicionais apenas quando necessário, economizando recursos quando as associações nem sempre são usadas.
