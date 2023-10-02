@@ -8,7 +8,9 @@ Aqui estão alguns conceitos-chave relacionados aos generics em Java:
 1. **Tipos Genéricos**: Em vez de usar tipos específicos (por exemplo, `String`, `Integer`, etc.), você pode usar tipos genéricos como `T`, `E`, `K`, `V`, etc.,
  para criar classes e métodos que funcionem com qualquer tipo.
 
-2. **Classe Genérica**: Você pode criar uma classe genérica definindo um ou mais parâmetros de tipo entre colchetes angulares (`<>`) ao definir a classe. Por exemplo:
+2. **Classe Genérica**:
+
+    Você pode criar uma classe genérica definindo um ou mais parâmetros de tipo entre colchetes angulares (`<>`) ao definir a classe. Por exemplo:
 
    ```java
    public class Caixa<T> {
@@ -26,8 +28,10 @@ Aqui estão alguns conceitos-chave relacionados aos generics em Java:
 
    Neste exemplo, `T` é o parâmetro de tipo que representa o tipo do valor armazenado na `Caixa`.
 
-3. **Método Genérico**: Além de classes genéricas, você pode criar métodos genéricos que usam parâmetros de tipo.
-Isso permite que você escreva métodos que funcionem com tipos genéricos. Por exemplo:
+3. **Método Genérico**:
+
+    Além de classes genéricas, você pode criar métodos genéricos que usam parâmetros de tipo.
+    Isso permite que você escreva métodos que funcionem com tipos genéricos. Por exemplo:
 
    ```java
    public <T> T retornaElemento(T[] array, int indice) {
