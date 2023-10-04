@@ -1,0 +1,36 @@
+    `Object... params`
+
+    é uma sintaxe em Java para criar um método com um número variável de argumentos, conhecidos como "varargs" (abreviação de "variable-length argument lists").
+    Essa característica permite que você chame o método com um número variável de argumentos do tipo `Object`.
+
+    Aqui está uma explicação mais detalhada:
+
+    - `Object`:
+
+            Indica o tipo do argumento que o método `consultar` aceitará.
+            Neste caso, é um tipo genérico `Object`, o que significa que ele pode aceitar argumentos de qualquer tipo.
+
+    - `...`:
+
+            Os três pontos (`...`) após o `Object` indicam que este é um parâmetro varargs.
+            Isso significa que o método pode aceitar zero ou mais argumentos do tipo `Object`.
+
+    Exemplo:
+
+    ```java
+    public List<E> consultar(String nomeConsulta, Object... params){
+        // Implementação do método aqui
+    }
+    ```
+
+    O método `consultar` aceita uma `String` chamada `nomeConsulta` como seu primeiro argumento e, em seguida,
+    aceita zero ou mais argumentos do tipo `Object` como `params`. Isso permite que você chame o método da seguinte maneira:
+
+    ```java
+    List<AlgumaClasse> resultados = consultar("MinhaConsulta", param1, param2, param3);
+    ```
+
+    Nesse exemplo, `"MinhaConsulta"` é passada como `nomeConsulta`, e `param1`, `param2`, `param3` são passados como argumentos variáveis do tipo `Object` na matriz `params`.
+
+    Dentro do método `consultar`, você pode acessar os argumentos em `params` como um array,
+    permitindo que você processe e utilize os parâmetros de forma flexível, dependendo da necessidade específica da consulta.

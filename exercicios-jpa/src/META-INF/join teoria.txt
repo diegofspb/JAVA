@@ -1,0 +1,46 @@
+    `join`
+
+     - em uma consulta JPQL (Java Persistence Query Language) é usada para combinar os registros de duas ou mais entidades (tabelas) com base em uma relação definida entre elas.
+      O principal objetivo do `join` é recuperar dados relacionados entre entidades em uma única consulta.
+
+    Aqui estão os principais pontos sobre a função do `join` em JPQL:
+
+    1. **Combinar Entidades Relacionadas:**
+
+        A cláusula `join` permite combinar dados de duas ou mais entidades que têm uma relação definida no modelo de dados.
+        Isso é especialmente útil quando você deseja recuperar dados de entidades relacionadas em uma única consulta em vez de realizar várias consultas separadas.
+
+    2. **Tipos de Join:**
+
+        Existem vários tipos de `join` que podem ser usados em JPQL:
+
+            `INNER JOIN`,
+            `LEFT JOIN` (ou `LEFT OUTER JOIN`),
+            'RIGHT JOIN` (ou `RIGHT OUTER JOIN`),
+            `FULL JOIN` (ou `FULL OUTER JOIN`).
+
+            Cada tipo de `join` determina como os registros são combinados e quais registros são incluídos na consulta final.
+
+
+    3. **INNER JOIN:**
+
+        É o tipo mais comum de `join`.
+        Ele retorna apenas os registros que têm correspondências nas duas tabelas envolvidas na junção.
+        Qualquer registro que não tenha correspondência é excluído da consulta.
+
+    4. **LEFT JOIN:**
+
+        Retorna todos os registros da tabela à esquerda (tabela principal) e os registros correspondentes da tabela à direita (tabela relacionada).
+        Se não houver correspondência na tabela à direita, os campos correspondentes na consulta resultarão em valores nulos.
+
+    5. **RIGHT JOIN:**
+
+        `RIGHT JOIN` retorna todos os registros da tabela à direita, incluindo aqueles sem correspondência na tabela oposta.
+
+    6. **FULL JOIN:**
+
+        Retorna todos os registros de ambas as tabelas, combinando registros quando houver correspondência e preenchendo com valores nulos quando não houver correspondência.
+
+    A cláusula `join` é frequentemente usada em consultas que envolvem entidades relacionadas em bancos de dados relacionais,
+    como aquelas mapeadas por meio de JPA (Java Persistence API).
+    Ela ajuda a consolidar dados relacionados em uma única consulta, melhorando a eficiência e evitando consultas separadas para recuperar informações relacionadas.

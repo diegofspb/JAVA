@@ -7,6 +7,15 @@ import javax.persistence.TypedQuery;
 import java.util.List;
 
 public class DAO<E> {  // uso do 'generics' lembrando que generics só pode ser utilizado para criar: Classes e Métodos
+
+    /*
+        'DAO<E>' é uma declaração de classe genérica que usa um parâmetro de tipo genérico chamado E.
+        Isso significa que a classe DAO é genérica e pode ser parametrizada com um tipo específico no momento da criação de uma instância.
+            Por exemplo:
+                - você pode criar uma instância de:
+                    DAO<Usuario> para trabalhar com a classe Usuario;
+                    DAO<Produto> para trabalhar com a classe Produto.
+    */
     private static EntityManagerFactory emf;
     private static EntityManager em;
     private Class<E> classe; // Class foi para especificar que o generics <E>, após instancia o DAO<E> será uma classe Class<E> classe, se deixar só <E> classe seria um atributo qualquer
@@ -30,6 +39,9 @@ public class DAO<E> {  // uso do 'generics' lembrando que generics só pode ser 
     public DAO(Class<E> classe){ // **** MÉTODO CONSTRUTOR 2 ****
         this.classe = classe;
         em = emf.createEntityManager();
+
+        // quando este método construtor é chamado, por exemplo por uma classe 'Usuario.class', então tudo nesta classe que é <E> lê-se <Usuario>
+        // exemplo no método abaixo que é 'public DAO<E> abrirT(){ }' vira 'public DAO<Usuario> abrirT(){ }'
     }
     public DAO<E> abrirT(){ // método que abre a transação
         em.getTransaction().begin();
@@ -65,16 +77,13 @@ public class DAO<E> {  // uso do 'generics' lembrando que generics só pode ser 
             throw new UnsupportedOperationException("Classe nula.");
         }
         // Java Persistence Query Language (jpql) é uma consulta apenas parecida com o sql que seleciona todos os registros da tabela associada à classe E
-        // tem que se estudada separado, pois o código abaixo indica a mesma coisa que SELECT * FROM 'nome_tabela'
+
         String jpql = "SELECT e FROM " + classe.getName() + " e";
         /*
             classe.getName(): Este trecho de código obtém o nome da classe Java representada pela variável classe.
             Por exemplo, se classe representar a classe Usuario, classe.getName() retornaria a string "Usuario".
             "SELECT e FROM " + classe.getName() + " e"
-            é o mesmo que "SELECT * FROM usuarios" no contexto de consulta SQL
-            seria o mesmo que: "SELECT usuario FROM usuario" neste contexto de ORM JPA JAVA
-            seria o mesmo que: "SELECT u FROM usuario u" neste contexto de ORM JPA JAVA
-
+            é o mesmo que "SELECT * FROM usuarios" no contexto de consulta SQL que corresponde a "SELECT u FROM usuario u" em JPQL
 
             "SELECT e FROM " + classe.getName() + " e": Aqui, estamos construindo uma consulta JPQL (Java Persistence Query Language).
             A letra 'e' é usada como um alias(apelido) para a entidade que está sendo selecionada na consulta.
@@ -90,24 +99,62 @@ public class DAO<E> {  // uso do 'generics' lembrando que generics só pode ser 
         /*
             TypedQuery<E>: é uma consulta tipada, ou seja, ela realizar uma query(consulta) utilizando um <objeto> como parâmetro
             TypedQuery é uma interface que permite consulta parametrizada(com parâmetros) no banco de dados com JPA,
-            TypedQuery já que é uma consulta parametrizada, então só pode ser usada com em.createQuery(parametro1, parametro2) que cria uma consulta(query) com 2 parâmetros
-            O <E> deve ser um tipo que corresponda à entidade mapeada no banco de dados.
+            O <E> é a classe instancia no método construtor
 
-            em.createQuery(jpql, classe): Isso cria a consulta JPA com uso de parâmetros.
+                - 'em' é uma instância de EntityManager, que é uma parte fundamental do JPA e é usado para interagir com o banco de dados.
 
-            'em' é uma instância de EntityManager, que é uma parte fundamental do JPA e é usado para interagir com o banco de dados.
-            '.createQuery' é a consulta que aceita 2 parâmetros
-             - jpql(PARÂMETRO 1) contém a string com o comento sql para consulta no banco de dados;
-             - classe (PARAMETRO 2) corresponde a entidade (tabela) no banco de dados;
+                - '.createQuery' é a consulta que aceita 2 parâmetros:
+                     -> jpql = string com comando parecido com SQL para consulta no banco de dados;
+                     -> classe = tipo de retorno, por isso se chama 'consulta tipada'.
 
-            createQuery(jpql, classe) cria uma consulta JPA com base na consulta 'jpql' (Java Persistence Query Language) representada pela string jpql
-            e no tipo da entidade representado por classe.
             A consulta JPQL é uma linguagem de consulta orientada a objetos semelhante ao SQL, mas que opera em objetos Java em vez de tabelas de banco de dados.
         */
         query.setMaxResults(qtde); //limita o número de resultados retornados
         query.setFirstResult(deslocamento); //defini o ponto de partida (ou deslocamento) na lista de resultados.
         // Por exemplo, se qtde for 10 e deslocamento for 0, ele retornará os primeiros 10 registros da tabela.
         return query.getResultList();
+    }
+    // este método 'consultar' é relacionado ao consulta.xml para personalizar as consultas (query) transformando em 'NamedQuery'
+    public List<E> consultar(String nomeConsulta, Object... params){ // 'Object... params' permite que vários parametros sejam passados e serão lidos como um 'array'
+        // explicação do 'Object... params' em arquivo separado
+
+       TypedQuery<E> query = em.createNamedQuery(nomeConsulta, classe); //nomeConsulta é o nome da consulta personalizada criada no consulta.xml e classe é o tipo do retorno
+
+        /*
+            O segundo parâmetro 'classe', que é opcional, é o tipo da classe que representa o tipo de resultado esperado da consulta.
+            Este parâmetro é usado para tipar o resultado da consulta, especificando o tipo dos objetos que a consulta retornará.
+            Quando esse parâmetro é fornecido, a consulta é considerada uma consulta tipada, e o tipo de retorno será esse tipo específico.
+            Quando esse parâmetro é omitido, a consulta é considerada não tipada e o tipo de retorno será Object.
+         */
+
+       for (int i = 0; i < params.length; i += 2){
+           query.setParameter(
+                   params[i].toString(),
+                   params[i+1]
+           );
+       }
+       /*
+            Este é um loop que percorre os parâmetros passados no 'Object... params'
+            Esses parâmetros são pares de chave-valor, onde:
+
+                o índice 'par' (i) é o nome do parâmetro da consulta JPQL
+                o índice 'ímpar' (i+1) é o valor a ser associado a esse parâmetro.
+
+            query.setParameter(params[i].toString(), params[i+1]):
+
+                  - Isso define o valor do parâmetro da consulta JPQL usando o nome do parâmetro (convertido para String) e o valor associado.
+
+            #### DIFERENÇA entre createNamedQuery e createQuery:
+
+                    createNamedQuery = consulta tipada + nomeada e  pré-definida em um arquivo xml;
+                    createQuery = consulta tipada + JPQL(string com código similar ao SQL ditigada livremente);
+
+       */
+       return query.getResultList();
+    }
+    public E consultarUm(String nomeConsulta, Object... params){
+        List<E> lista = consultar(nomeConsulta, params);
+        return lista.isEmpty() ? null: lista.get(0);
     }
     public void fechar(){
         em.close();
