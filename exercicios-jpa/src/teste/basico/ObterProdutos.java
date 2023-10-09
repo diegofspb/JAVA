@@ -13,6 +13,5 @@ public class ObterProdutos {
         for (Produto produto: produtos) {
             System.out.println(produto.getNome());
         }
-
     }
 }

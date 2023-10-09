@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<entity-mappings version="2.1"
+                 xmlns="http://xmlns.jcp.org/xml/ns/persistence/orm"
+                 xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                 xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/persistence/orm  http://xmlns.jcp.org/xml/ns/persistence/persistence_2_1.xsd">
+
+
+    <named-query name="obterFilmesNotaMaiorQue">
+        <query>
+            select distinct f from Filme f
+            join fetch f.atores
+            where f.nota > :nota
+        </query>
+    </named-query>
+
+    <!--
+            'distinct' serve para evitar pegar duas vezes o mesmo resultado de consulta
+
+            'fetch': está instruindo o JPA para trazer todos os atores associados a cada filme recuperado pela consulta,
+                     em vez de carregá-los posteriormente como no caso de uma consulta 'lazy'
+
+            Uso dos dois pontos ':' na query acima:
+
+            Os dois pontos (`:`) antes de `nota` na consulta JPQL são usados para indicar que `nota` é um parâmetro nomeado.
+            Os parâmetros nomeados são uma parte essencial das consultas JPQL, pois permitem que você substitua esses valores por valores reais
+            durante a execução da consulta.
+                Exemplo:
+
+                query.setParameter("nota", valor_da_nota);
+
+            Isso associará `valor_da_nota` ao parâmetro `:nota` na consulta JPQL antes da execução, permitindo que a consulta seja executada com o valor desejado.
+      -->
+
+    <named-native-query name="obterMediaGeralDosFilmes" result-set-mapping="NotaFilmeMap">
+        <query>
+            select avg(nota) as media from filmes
+        </query>
+    </named-native-query>
+
+    <sql-result-set-mapping name="NotaFilmeMap">
+        <constructor-result target-class="modelo.consulta.NotaFilme">
+            <column name="media" class="java.lang.Double"/>
+        </constructor-result>
+    </sql-result-set-mapping>
+
+    <!--
+       Ele define uma consulta SQL nativa chamada "obterMediaGeralDosFilmes" e um mapeamento de resultado chamado "NotaFilmeMap".
+
+        1. **`<named-native-query>` (Consulta Nativa Nomeada):**
+        - `<named-native-query name="obterMediaGeralDosFilmes" result-set-mapping="NotaFilmeMap">`:
+
+                Isso define uma consulta SQL nativa com o nome "obterMediaGeralDosFilmes" e especifica que os resultados da consulta
+                serão mapeados usando o conjunto de resultados especificado como "NotaFilmeMap".
+
+        - `<query>`: Aqui está a consulta SQL nativa em si. A consulta seleciona a média (`avg`) da coluna `nota` da tabela `filmes` e a renomeia como "media".
+
+        2. **`<sql-result-set-mapping>` (Mapeamento de Resultados SQL):**
+        - `<sql-result-set-mapping name="NotaFilmeMap">`:
+
+                Isso define um mapeamento de resultado com o nome "NotaFilmeMap".
+                Esse mapeamento será usado para mapear os resultados da consulta nativa para objetos Java.
+
+        - `<constructor-result target-class="modelo.consulta.NotaFilme">`:
+
+                Isso especifica que os resultados da consulta serão mapeados para objetos da classe `NotaFilme`, que está localizada no pacote `modelo.consulta`.
+
+        - `<column name="media" class="java.lang.Double"/>`:
+
+                Aqui, você especifica como mapear a coluna "media" da consulta SQL nativa para um atributo `media` de tipo `Double` na classe `NotaFilme`.
+
+        Em resumo, o código XML descreve uma consulta SQL nativa chamada "obterMediaGeralDosFilmes"
+        que calcula a média da coluna "nota" da tabela "filmes".
+        O resultado dessa consulta será mapeado para objetos da classe `NotaFilme`,
+        onde a coluna "media" da consulta corresponderá ao atributo `media` da classe,
+        que é do tipo `Double`.
+        Isso permite que você execute essa consulta nativa usando JPA e mapeie os resultados para objetos Java de forma estruturada.
+    -->
+
+    </entity-mappings>
