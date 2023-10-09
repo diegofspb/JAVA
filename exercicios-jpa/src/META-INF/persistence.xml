@@ -13,6 +13,11 @@
         <class>Modelo.umPraUm.Assento</class>
         <class>Modelo.umPraUm.Pedido</class>
         <class>Modelo.umPraUm.ItemPedido</class>
+        <class>Modelo.composicao.Endereco</class>
+        <class>Modelo.composicao.Fornecedor</class>
+        <class>Modelo.composicao.Funcionario</class>
+        <class>Modelo.composicao.Aluno</class>
+        <class>Modelo.composicao.AlunoBolsista</class>
 
         <properties>
             <property name="javax.persistence.jdbc.driver"

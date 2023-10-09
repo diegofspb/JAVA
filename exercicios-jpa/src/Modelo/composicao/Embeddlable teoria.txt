@@ -1,0 +1,49 @@
+A anotação `@Embeddable` é usada em Java Persistence API (JPA) para marcar uma classe como uma classe incorporável.
+
+Em JPA, uma classe incorporável é uma classe cujos objetos podem ser incorporados (ou aninhados) em outras entidades persistentes.
+Isso significa que os atributos da classe incorporável são mapeados como parte dos atributos da entidade pai no banco de dados,
+em vez de serem mapeados para uma tabela separada.
+
+Aqui está um exemplo de como usar a anotação `@Embeddable` em JPA:
+
+```java
+import javax.persistence.Embeddable;
+
+@Embeddable
+public class Endereco {
+    private String rua;
+    private String cidade;
+    private String estado;
+    private String cep;
+
+    // Construtores, getters e setters .....
+}
+```
+Neste exemplo, a classe `Endereco` é marcada como `@Embeddable`, o que a torna adequada para ser incorporada em outras entidades.
+Por exemplo, se você tiver uma entidade `Cliente` que possui um atributo `endereco` do tipo `Endereco`, você pode
+usar a classe `Endereco` dentro da entidade `Cliente` da seguinte maneira:
+
+```java
+import javax.persistence.Embedded;
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity
+public class Cliente {
+    @Id
+    private Long id;
+    private String nome;
+
+    @Embedded
+    private Endereco endereco;
+
+    // Construtores, getters e setters
+}
+```
+
+Ao marcar a classe `Endereco` como `@Embeddable` e usar a anotação `@Embedded` no atributo `endereco` da classe `Cliente`,
+você está dizendo ao JPA que os atributos da classe `Endereco` devem ser mapeados como parte da tabela da entidade `Cliente` no banco de dados.
+
+Isso é útil quando você deseja representar estruturas de dados complexas ou incorporar objetos em entidades sem criar tabelas separadas
+para eles no banco de dados.
+O JPA cuidará automaticamente do mapeamento dos atributos da classe incorporável para as colunas da entidade pai.
