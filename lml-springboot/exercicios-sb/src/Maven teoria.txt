@@ -1,0 +1,36 @@
+Em Spring Boot, o Maven é uma ferramenta de gerenciamento de construção e dependências muito popular.
+
+Ele é usado para automatizar tarefas relacionadas à compilação, construção e gerenciamento de projetos Java, incluindo projetos Spring Boot.
+
+Maven ajuda a simplificar o processo de construção e distribuição de aplicativos Java, garantindo que todas as dependências sejam resolvidas corretamente
+e que o projeto seja construído de forma consistente.
+
+Aqui estão algumas das principais funcionalidades do Maven em um projeto Spring Boot:
+
+1. Gerenciamento de dependências:
+
+    O Maven permite que você defina as dependências do seu projeto em um arquivo chamado "pom.xml".
+    Ele cuida de baixar automaticamente as bibliotecas necessárias do repositório central do Maven ou de outros repositórios configurados.
+
+2. Compilação:
+
+    Maven gerencia o ciclo de vida da compilação, incluindo a compilação do código-fonte, a geração de classes e recursos compilados,
+    e a criação de artefatos (como arquivos JAR ou WAR) a partir do projeto.
+
+3. Relatórios e documentação:
+
+    Maven fornece plugins para gerar relatórios de projeto, como relatórios de teste, documentação do código e muito mais.
+
+4. Gerenciamento de ciclo de vida:
+
+    O Maven define um ciclo de vida padrão para projetos Java que inclui fases como "compile", "test", "package" e "install".
+    Isso facilita a execução de tarefas específicas em diferentes estágios do desenvolvimento do projeto.
+
+5. Padronização:
+
+    O Maven promove práticas de desenvolvimento padronizadas, como convenções de nomes de diretórios e estrutura de projetos,
+    tornando os projetos mais organizados e fáceis de entender e manter.
+
+Para criar um projeto Spring Boot com o Maven, você pode usar o Spring Initializr, que é uma ferramenta online
+que gera um projeto Spring Boot básico com as configurações do Maven já definidas no arquivo "pom.xml".
+Em seguida, você pode usar o Maven para gerenciar as dependências, compilar o projeto e criar artefatos executáveis.
