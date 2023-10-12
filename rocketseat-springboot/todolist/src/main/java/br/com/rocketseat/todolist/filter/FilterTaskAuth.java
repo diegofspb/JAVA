@@ -9,11 +9,9 @@ import org.springframework.web.filter.OncePerRequestFilter;
 
 import at.favre.lib.crypto.bcrypt.BCrypt;
 import br.com.rocketseat.todolist.user.IUserRepository;
-import jakarta.servlet.Filter;
+
 import jakarta.servlet.FilterChain;
 import jakarta.servlet.ServletException;
-import jakarta.servlet.ServletRequest;
-import jakarta.servlet.ServletResponse;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
@@ -27,34 +25,45 @@ public class FilterTaskAuth extends OncePerRequestFilter{
     protected void doFilterInternal(HttpServletRequest request, HttpServletResponse response, FilterChain filterChain)
             throws ServletException, IOException {
 
+                var servletPath = request.getServletPath(); // serve para pegar a 'url' que está vindo a request
 
-                // confirma a Autenticação do Usuário
-                var authorization = request.getHeader("Authorization");
-                var authEncoded = authorization.substring("Basic".length()).trim();
+                if (servletPath.startsWith("/tasks/")) {
+                    
+                    // confirma a Autenticação do Usuário
 
-                byte[] authDecode = Base64.getDecoder().decode(authEncoded);
+                    // pega usuário e senha e confirma se são válidos:
 
-                var authString = new String(authDecode);
-
-                String[] credentials = authString.split(":");
-                String username = credentials[0];
-                String password = credentials[1];
-
-                // Validar o Usuário
-
-                var user = this.userRepository.findByUsername(username);
-                if(user == null){
-                    response.sendError(401, "Usuário sem autorização!");
-                }else{
-                    // validar senha
-
-                    var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
-                    if(passwordVerify.verified){
-                        filterChain.doFilter(request, response);
+                    var authorization = request.getHeader("Authorization");
+                    var authEncoded = authorization.substring("Basic".length()).trim();
+    
+                    byte[] authDecode = Base64.getDecoder().decode(authEncoded);
+    
+                    var authString = new String(authDecode);
+    
+                    String[] credentials = authString.split(":");
+                    String username = credentials[0];
+                    String password = credentials[1];
+    
+                    // Validar o Usuário
+    
+                    var user = this.userRepository.findByUsername(username);
+                    if(user == null){
+                        response.sendError(401, "Usuário sem autorização!");
                     }else{
-                        response.sendError(401);
+                        // validar senha
+    
+                        var passwordVerify = BCrypt.verifyer().verify(password.toCharArray(), user.getPassword());
+                        if(passwordVerify.verified){
+                            request.setAttribute("idUser", user.getId()); // pega o valor do id do usuário e lança dentro da variável "idUser"
+                            filterChain.doFilter(request, response);
+                        }else{
+                            response.sendError(401);
+                        }
                     }
+                }else{
+                    filterChain.doFilter(request, response);
                 }
+
 
 
                
