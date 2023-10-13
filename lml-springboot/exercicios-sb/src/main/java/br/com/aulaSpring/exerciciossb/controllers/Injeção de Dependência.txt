@@ -1,0 +1,47 @@
+
+A injeção de dependência (Dependency Injection - DI) é usada para gerenciar as dependências de um componente de forma eficiente, flexível e desacoplada.
+
+Em termos simples, a injeção de dependência envolve a passagem das dependências necessárias para um componente a partir de uma fonte externa,
+em vez de o próprio componente criar ou gerenciar suas dependências.
+sso ajuda a reduzir o acoplamento(dependência) entre os componentes do sistema e torna o código mais flexível, testável e fácil de manter.
+
+No contexto do Spring Boot, a injeção de dependência é uma parte central do framework Spring.
+Spring Boot fornece um contêiner de inversão de controle (IoC) que gerencia as dependências de seus componentes.
+
+Aqui estão alguns conceitos-chave relacionados à injeção de dependência no Spring Boot:
+
+1. **Componentes gerenciados**:
+
+    Classes que precisam de dependências (como serviços, repositórios, controladores, etc.) são anotadas com anotações específicas, como:
+
+        `@Service`,
+        `@Repository`
+        `@Controller`.
+
+        Essas anotações indicam ao Spring que a classe é um componente gerenciado.
+
+
+2. **Injeção de dependência**:
+
+        As dependências necessárias para um componente são injetadas por meio de construtores, métodos setter ou campos anotados com `@Autowired`.
+        O Spring Boot é responsável por fornecer as instâncias apropriadas das dependências no momento em que o componente é criado.
+
+3. **Configuração de beans**:
+
+        O Spring Boot permite configurar beans (objetos gerenciados pelo contêiner Spring) em um arquivo de configuração XML ou
+        por meio de anotações, como `@Bean`.
+
+4. **Escopo de beans**:
+
+        É possível configurar o escopo de um bean, indicando se ele é um singleton (uma única instância compartilhada) ou
+        um bean com escopo protótipo (uma nova instância para cada injeção).
+
+5. **Inversão de controle (IoC)**:
+
+        A inversão de controle é um princípio associado à injeção de dependência.
+        Em vez de os componentes controlarem a criação de suas dependências, o controle é invertido para o contêiner Spring,
+        que gerencia a criação e injeção das dependências.
+
+A injeção de dependência no Spring Boot simplifica o desenvolvimento de aplicativos, pois reduz a complexidade do gerenciamento manual de dependências.
+Além disso, torna o código mais flexível e facilita a escrita de testes unitários, pois você pode substituir facilmente as dependências
+por mocks ou implementações simuladas durante os testes.
