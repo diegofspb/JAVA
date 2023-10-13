@@ -1,0 +1,53 @@
+
+A anotação `@RequestMapping` é uma anotação fundamental em Spring Framework que é usada para mapear solicitações HTTP para métodos de controlador.
+Ela permite que você especifique qual método de um controlador deve ser invocado para atender a uma solicitação específica com base em vários critérios,
+como o método HTTP, a URL, os parâmetros da solicitação e muito mais.
+
+Aqui estão algumas das formas comuns de uso da anotação `@RequestMapping`:
+
+1. **Mapeamento por URL**:
+   - `@RequestMapping("/rota")`: Isso mapeia a rota "/rota" para o método anotado. Quando a URL corresponde a "/rota", o método é executado.
+
+2. **Mapeamento por Método HTTP**:
+   - `@RequestMapping(method = RequestMethod.GET)`: Isso mapeia apenas solicitações GET para o método.
+   - `@RequestMapping(method = RequestMethod.POST)`: Isso mapeia apenas solicitações POST para o método.
+   - E assim por diante, você pode especificar qualquer método HTTP suportado.
+
+3. **Mapeamento por Parâmetros**:
+   - `@RequestMapping(params = "param=valor")`: Mapeia apenas quando a solicitação contém um parâmetro específico com um determinado valor.
+
+4. **Mapeamento por Cabeçalhos HTTP**:
+   - `@RequestMapping(headers = "Content-Type=application/json")`: Mapeia apenas quando a solicitação possui um cabeçalho HTTP específico.
+
+5. **Mapeamento por Consumo e Produção de Mídia**:
+   - `@RequestMapping(consumes = "application/json")`: Mapeia apenas quando a solicitação possui um tipo de mídia específico.
+   - `@RequestMapping(produces = "application/json")`: Mapeia apenas quando o método produz um tipo de mídia específico.
+
+6. **Mapeamento por Variáveis de Caminho (Path Variables)**:
+   - `@RequestMapping("/recurso/{id}")`: Mapeia URLs que incluem um valor variável na URL, como "/recurso/1".
+
+A anotação `@RequestMapping` pode ser usada em níveis diferentes, ou seja, em nível de classe (no controlador) e em nível de método (para métodos específicos do controlador).
+Quando usada em nível de classe, ela define um prefixo comum para todos os métodos do controlador.
+
+Aqui está um exemplo de uso da anotação `@RequestMapping`:
+
+```java
+@Controller
+@RequestMapping("/exemplo")
+public class ExemploController {
+
+    @RequestMapping(method = RequestMethod.GET, value = "/rota")
+    public String paginaDeExemplo() {
+        return "exemplo";
+    }
+
+    @RequestMapping(method = RequestMethod.POST, value = "/outraRota")
+    public String processarFormulario() {
+        // Lógica de processamento do formulário
+        return "resultado";
+    }
+}
+```
+
+Neste exemplo, a classe `ExemploController` é mapeada para o prefixo "/exemplo", e os métodos são mapeados para URLs específicas usando `@RequestMapping`.
+O primeiro método responde a solicitações GET para "/exemplo/rota", e o segundo método responde a solicitações POST para "/exemplo/outraRota".

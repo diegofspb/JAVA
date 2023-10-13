@@ -1,0 +1,23 @@
+
+Em Spring Boot, a anotação `@RestController` é usada para indicar que uma classe é um controlador (controller)
+especializado em retornar dados diretamente no formato de resposta HTTP, geralmente em formato JSON.
+
+Essa anotação combina a funcionalidade de duas outras anotações: `@Controller` e `@ResponseBody`.
+
+
+1. `@Controller`:
+
+    A anotação `@Controller` é usada para marcar uma classe como um controlador em uma aplicação Spring.
+    Controladores são responsáveis por lidar com as solicitações HTTP, mapeando-as para métodos específicos que executam a lógica de negócios e
+    retornam uma visão (normalmente uma página HTML). Essa anotação é parte fundamental do controle de solicitações.
+
+2. `@ResponseBody`:
+
+    A anotação `@ResponseBody` é usada para indicar que o valor retornado por um método deve ser serializado diretamente para o corpo da resposta HTTP,
+    em vez de ser interpretado como uma visão a ser renderizada.
+    Isso é útil quando você deseja retornar dados em formatos como JSON, XML ou qualquer outro formato de resposta HTTP.
+
+`@RestController` combina automaticamente as funcionalidades de `@Controller` e `@ResponseBody`.
+
+Portanto, você não precisa adicionar a anotação `@ResponseBody` explicitamente em cada método do controlador para
+indicar que o valor retornado deve ser serializado em JSON ou outro formato adequado.
