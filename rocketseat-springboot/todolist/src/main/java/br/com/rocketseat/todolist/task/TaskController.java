@@ -25,10 +25,12 @@ public class TaskController {
     @Autowired
     private ITaskRepository taskRepository;
 
+    // este método cria uma tarefa  
     @PostMapping("/")
     public ResponseEntity create(@RequestBody TaskModel taskModel, HttpServletRequest request){
-
-        // este método cria uma tarefa      
+        
+        var idUser = request.getAttribute("idUser");
+        taskModel.setIdUser((UUID) idUser);           
 
         // validando valores de entrada de data para evitar que uma tarefa seja inserida com data passada, ou seja, cadastrar tarefa vencida
 
@@ -56,13 +58,26 @@ public class TaskController {
     }
 
     @PutMapping("/{id}") // este id sejá lançado no @PathVariable UUID id
-    public TaskModel update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID id){
+    public ResponseEntity update(@RequestBody TaskModel taskModel, HttpServletRequest request, @PathVariable UUID id){
        
+        // faz pesquisa para saber quais taferas pertencem a este usuário logado
         var task = this.taskRepository.findById(id).orElse(null);
+        // verifica se a tarefa existe
+        if(task == null){
+             return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body("Tarefa não encontrada");
+        }
+        // apenas identifica o usuário logado através da ID
+        var idUser = request.getAttribute("idUser");
+        // caso o usuário logado não seja o o dono/criador da task(tarefa) então ele não poderá alterar a tarefa
+        if(!task.getIdUser().equals(idUser)){
+            return ResponseEntity.status((HttpStatus.BAD_REQUEST)).body("Usuário não tem permissão para alterar essa tarefa");
+        }
 
         Utils.copyNonNullProperties(taskModel, task); // Utils foi uma classe criada por nós para ser utilizada sem precisar instanciar 'static'
+        
+        var taskUpdated = this.taskRepository.save(task);
   
-        return this.taskRepository.save(task);
+        return ResponseEntity.ok().body(taskUpdated);
 
     }
     

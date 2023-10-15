@@ -9,6 +9,6 @@ import org.springframework.data.jpa.repository.JpaRepository;
 public interface ITaskRepository extends JpaRepository<TaskModel, UUID>{
 
     //criar um filtro para trazer apenas as tarefas do usário que estiver logado
-    List<TaskModel> findByIdUser(UUID idUser);
+    List<TaskModel> findByIdUser(UUID idUser);    
     
 }
