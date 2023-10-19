@@ -1,43 +1,30 @@
 package br.com.aulaSpring.exerciciossb.models.entities;
 
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
+import jakarta.persistence.*;
 import jakarta.validation.constraints.Max;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
 
-@Entity
+@Data // =  @Getter, @Setter, @EqualsAndHashCode e @ToString.
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity(name = "produtos") // este name é o nome da entidade que será usado neste código
+@Table(name = "produtos") // este name é efetivamente o nome da tabela no banco de dados
 public class Produto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private  int id;
-    @NotBlank // é um tipo de validação. Diz que a coluna 'nome' não pode estar em vazia
+    private Long id;
+
+    // é um tipo de validação. Diz que a coluna 'nome' não pode estar em vazia
+    @NotBlank(message = "O campo 'nome' não deve estar em branco")
     private String nome;
     @Min(0) // é um tipo de validação. Diz que o preço mínimo é 0, ou seja, não aceita valor negativo
     private double preco;
-    @Min(0)
-    @Max(1) // é um tipo de validação. Diz que o desconto máximo é 1, ou seja, vai varia de 0.1 = 1% até o máximo 1.0 = 100%
-    private double desconto;
-
-    public Produto() {
-    }
-
-    public Produto(String nome, double preco, double desconto) {
-        this.nome = nome;
-        this.preco = preco;
-        this.desconto = desconto;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 
     public String getNome() {
         return nome;
@@ -55,11 +42,4 @@ public class Produto {
         this.preco = preco;
     }
 
-    public double getDesconto() {
-        return desconto;
-    }
-
-    public void setDesconto(double desconto) {
-        this.desconto = desconto;
-    }
 }

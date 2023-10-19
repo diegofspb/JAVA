@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="f3cb3f43-6c8f-4b8a-b5b8-cebd8517d933" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/conexao.properties" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/conexao.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/ConsultarPessoas1.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/ConsultarPessoas1.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/CriarTabelaPessoas.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/CriarTabelaPessoas.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/FabricaConexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/FabricaConexao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/NovaPessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/NovaPessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/Pessoa.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/Pessoa.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/PreparedStatement teoria" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/PreparedStatement teoria" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/Statement teoria" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/Statement teoria" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/TesteConexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc/TesteConexao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc_treinamento/Conexao.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc_treinamento/Conexao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc_treinamento/CriarNovoBanco.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Curso_Java-Intellij/src/jdbc_treinamento/CriarNovoBanco.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "customColor": "",
+  "associatedIndex": 6
+}]]></component>
+  <component name="ProjectId" id="2W1QU3t3TgBqUm9s91MMrSWYdog" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "git-widget-placeholder": "main",
+    "last_opened_file_path": "C:/Users/PC/Desktop/upar git-hub/JAVA/java/exercicios-jpa"
+  }
+}]]></component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="f3cb3f43-6c8f-4b8a-b5b8-cebd8517d933" name="Changes" comment="" />
+      <created>1695897621419</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1695897621419</updated>
+    </task>
+    <servers />
+  </component>
+</project>

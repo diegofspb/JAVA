@@ -1,0 +1,68 @@
+SQL (Structured Query Language) é uma linguagem de programação usada para gerenciar bancos de dados. Vamos abordar os comandos mais comuns.
+
+1. **SELECT - Consulta de Dados**:
+
+   O comando `SELECT` é usado para recuperar dados de uma tabela.
+
+   Exemplo:
+
+   SELECT nome, idade FROM clientes WHERE cidade = 'Nova York';
+
+   Isso selecionará os nomes e idades dos clientes que moram em Nova York.
+
+2. **INSERT - Inserção de Dados**:
+
+   O comando `INSERT` é usado para adicionar novos registros a uma tabela.
+
+   Exemplo:
+
+   INSERT INTO produtos (nome, preço) VALUES ('Smartphone', 500);
+
+   Isso adicionará um novo produto chamado "Smartphone" com o preço de 500 à tabela de produtos.
+
+3. **UPDATE - Atualização de Dados**:
+
+   O comando `UPDATE` é usado para modificar registros existentes em uma tabela.
+
+   Exemplo:
+
+   UPDATE funcionários SET salário = 60000 WHERE id = 101;
+
+   Isso aumentará o salário do funcionário com o ID 101 para 60.000.
+
+4. **DELETE - Exclusão de Dados**:
+
+   O comando `DELETE` é usado para remover registros de uma tabela.
+
+   Exemplo:
+
+   DELETE FROM pedidos WHERE data < '2023-01-01';
+
+   Isso apagará todos os pedidos feitos antes de 1º de janeiro de 2023.
+
+5. **CREATE TABLE - Criação de Tabelas**:
+
+   O comando `CREATE TABLE` é usado para criar uma nova tabela no banco de dados.
+
+   Exemplo:
+
+   CREATE TABLE clientes (
+       id INT PRIMARY KEY,
+       nome VARCHAR(50),
+       idade INT
+   );
+
+   Isso criará uma tabela chamada "clientes" com três colunas: id, nome e idade.
+
+6. **ALTER TABLE - Alteração de Tabelas**:
+
+   O comando `ALTER TABLE` é usado para adicionar, modificar ou excluir colunas em uma tabela existente.
+
+   Exemplo:
+
+   ALTER TABLE clientes ADD email VARCHAR(100);
+
+   Isso adicionará uma nova coluna "email" à tabela de clientes.
+
+Esses são comandos SQL básicos, e existem muitos outros comandos e recursos avançados para realizar operações complexas em bancos de dados.
+É importante lembrar de usar comandos SQL com cuidado, especialmente em ambientes de produção, para evitar a perda de dados ou problemas de integridade do banco de dados.

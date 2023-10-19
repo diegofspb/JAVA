@@ -1,0 +1,22 @@
+instalação:
+
+copie e cole no arquivo 'pom.xml'
+
+<dependency>
+  <groupId>org.projectlombok</groupId>
+  <artifactId>lombok</artifactId>
+  <version>1.18.20</version>
+  <scope>provided</scope>
+</dependency>
+
+---> ao adicionar os métodos abaixo ainda na Classe e não nos atributos, o Lombok gera automaticamente os códigos:
+
+@Getter
+@Setter
+@AllArgsConstructor
+@NoArgsConstructor
+
+@EqualsAndHashCode
+@ToString
+
+@Data ====>  @Getter, @Setter, @EqualsAndHashCode e @ToString.

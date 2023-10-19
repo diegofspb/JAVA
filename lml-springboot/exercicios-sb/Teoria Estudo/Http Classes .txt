@@ -1,0 +1,116 @@
+Http Classes:
+
+1. **`HttpStatus`**:
+
+   é uma enumeração que representa os códigos de status HTTP.
+   Ela permite definir o resultado da resposta HTTP em seu aplicativo Spring Boot.
+
+   Aqui estão alguns exemplos:
+
+   ```java
+   // Definindo o código de status como "OK" (200)
+   HttpStatus status = HttpStatus.OK;
+
+   // Usando o código de status em uma resposta ResponseEntity
+   ResponseEntity<String> responseEntity = new ResponseEntity<>("Mensagem de sucesso", status);
+   ```
+
+2. **`HttpHeaders`**:
+
+   `HttpHeaders` permite definir cabeçalhos HTTP personalizados que serão enviados junto com a resposta.
+   Isso é útil para definir cabeçalhos como "Content-Type" ou "Authorization". Aqui está um exemplo:
+
+   ```java
+   HttpHeaders headers = new HttpHeaders();
+   headers.setContentType(MediaType.APPLICATION_JSON);
+
+   ResponseEntity<String> responseEntity = new ResponseEntity<>("Dados JSON", headers, HttpStatus.OK);
+   ```
+
+3. **`ResponseEntity`**:
+
+   `ResponseEntity` é uma classe que encapsula o corpo da resposta, os cabeçalhos e o código de status em uma única unidade.
+   É útil para criar respostas HTTP personalizadas. Aqui está um exemplo:
+
+   ```java
+   ResponseEntity<String> responseEntity = new ResponseEntity<>("Conteúdo da resposta", HttpStatus.OK);
+   ```
+
+4. **`HttpServletRequest` e `HttpServletResponse`**:
+
+   Essas classes representam as solicitações e respostas HTTP em um aplicativo da Web.
+   Você pode usá-las em seus controladores Spring para acessar informações sobre a solicitação do cliente e manipular a resposta.
+   Aqui está um exemplo de método de controlador que usa `HttpServletRequest` para acessar informações da solicitação:
+
+   ```java
+   @RequestMapping("/exemplo")
+   public ResponseEntity<String> exemplo(HttpServletRequest request) {
+       String userAgent = request.getHeader("User-Agent");
+       return new ResponseEntity<>("User-Agent: " + userAgent, HttpStatus.OK);
+   }
+   ```
+
+5. **`@RequestMapping`**:
+
+   A anotação `@RequestMapping` é usada em controladores Spring para mapear métodos para lidar com solicitações HTTP específicas.
+
+   Você pode configurar o método HTTP, o URI e outros detalhes da solicitação. Aqui está um exemplo:
+
+   ```java
+   @RequestMapping(value = "/produto/{id}", method = RequestMethod.GET)
+   public ResponseEntity<Produto> obterProduto(@PathVariable Long id) {
+       Produto produto = produtoService.obterPorId(id);
+       return new ResponseEntity<>(produto, HttpStatus.OK);
+   }
+   ```
+
+6. **`@RequestParam` e `@PathVariable`**:
+
+   As anotações `@RequestParam` e `@PathVariable` são usadas para extrair dados da solicitação HTTP, como parâmetros de consulta e
+   variáveis de caminho, e usá-los em métodos controladores. Aqui está um exemplo que usa ambas:
+
+   ```java
+   @RequestMapping("/exemplo")
+   public ResponseEntity<String> exemplo(
+       @RequestParam(name = "parametro", defaultValue = "padrao") String parametro,
+       @PathVariable Long id
+   ) {
+       String mensagem = "Parâmetro: " + parametro + ", ID: " + id;
+       return new ResponseEntity<>(mensagem, HttpStatus.OK);
+   }
+   ```
+
+7. **`@RequestBody`**:
+
+   A anotação `@RequestBody` permite mapear o corpo da solicitação HTTP para um objeto Java.
+   É frequentemente usado para receber dados enviados no corpo de uma solicitação POST. Aqui está um exemplo:
+
+   ```java
+   @PostMapping("/criar")
+   public ResponseEntity<Produto> criarProduto(@RequestBody Produto produto) {
+       Produto novoProduto = produtoService.criar(produto);
+       return new ResponseEntity<>(novoProduto, HttpStatus.CREATED);
+   }
+   ```
+
+8. **`@ResponseBody`**:
+
+   A anotação `@ResponseBody` indica que o valor retornado por um método controlador deve ser serializado como resposta HTTP,
+   geralmente em formato JSON ou XML. Aqui está um exemplo:
+
+   ```java
+   @GetMapping("/dados")
+   @ResponseBody
+   public ResponseEntity<Dados> obterDados() {
+       Dados dados = dadosService.obterDados();
+       return new ResponseEntity<>(dados, HttpStatus.OK);
+   }
+   ```
+
+9. **`RestTemplate`**:
+
+   `RestTemplate` é uma classe que facilita a criação de solicitações HTTP para acessar serviços RESTful de forma programática.
+   Aqui está um exemplo de uso para fazer uma solicitação GET:
+
+   ```java
+   RestTemplate restTemplate = new RestTemplate();

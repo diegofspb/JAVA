@@ -1,0 +1,23 @@
+O `Optional` é uma classe da biblioteca Java que faz parte do Java 8 e posteriores.
+Ele é usado para representar uma possível ausência de valor (ou um valor nulo) e ajuda a evitar verificações de nulo desnecessárias em seu código.
+É uma abordagem mais segura para lidar com valores que podem ou não existir.
+
+No exemplo em questão, usamos `Optional` junto com o método `findById` do Spring Data JPA para buscar um objeto no banco de dados.
+Aqui está por que usamos o `Optional` e como ele funciona:
+
+1. O método `findById` retorna um `Optional` porque o objeto que você está procurando pode ou não existir no banco de dados.
+Se o objeto for encontrado, ele será armazenado no `Optional`, caso contrário, o `Optional` estará vazio.
+
+2. Usar `Optional` ajuda a indicar explicitamente que o valor pode ser ausente, evitando ambiguidades com valores nulos.
+Isso também encoraja os desenvolvedores a considerar a possibilidade de que o valor não exista.
+
+3. Para obter o valor dentro do `Optional`, você pode usar o método `get()`, mas deve fazer isso apenas após verificar se
+o `Optional` não está vazio (usando `isPresent()`).
+Isso evita exceções `NoSuchElementException` que ocorreriam se você tentasse acessar um valor em um `Optional` vazio.
+
+4. No exemplo, verificamos a presença do valor usando `produtoExistenteOptional.isPresent()` e, em seguida, obtemos o valor
+usando `produtoExistenteOptional.get()`. Se o `Optional` estiver vazio, lançamos uma exceção para indicar que o produto não foi encontrado.
+
+No geral, o uso de `Optional` torna o código mais seguro e expressivo, indicando de maneira clara que um valor pode ser ausente e
+fornecendo uma maneira segura de acessá-lo quando ele está presente.
+Isso é especialmente útil ao trabalhar com consultas em bancos de dados, onde o resultado pode ser nulo se o registro não for encontrado.

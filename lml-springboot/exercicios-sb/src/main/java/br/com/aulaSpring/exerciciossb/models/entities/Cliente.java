@@ -1,5 +1,9 @@
 package br.com.aulaSpring.exerciciossb.models.entities;
 
+import lombok.Data;
+
+@Data // pertence a biblioteca lombok que inclui todos os geters and seters de todos os atributos abaixo sem precisar incluir explicitamente
+// para utilizar a biblioteca lombok pesquisa no google e copia e cola a dependencia para o maven no arquivo pom.xml
 public class Cliente {
 
     private int id;

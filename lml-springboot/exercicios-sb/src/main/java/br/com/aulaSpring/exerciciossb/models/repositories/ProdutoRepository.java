@@ -1,14 +1,16 @@
 package br.com.aulaSpring.exerciciossb.models.repositories;
 
 import br.com.aulaSpring.exerciciossb.models.entities.Produto;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.data.repository.PagingAndSortingRepository;
 
-public interface ProdutoRepository extends CrudRepository<Produto, Integer> {
+public interface ProdutoRepository extends JpaRepository<Produto, Long> {
 
     // no Spring basta vc criar um método com nome pré-definino pela convensão que o spring entende que ele realizará determinada função
     // no exemplo abaixo, ao iniciar o nome do método com 'findBy' o Spring entende que é para fazer uma pesquisa no bando de dados
     public Iterable<Produto> findByNomeContainingIgnoreCase(String parteNome);
+
 
     /*
         recomenda-se olhar na documentação outros nomes, exemplo:

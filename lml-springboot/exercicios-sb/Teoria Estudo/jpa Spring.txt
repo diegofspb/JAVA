@@ -1,0 +1,12 @@
+## Spring JPA
+
+O Spring JPA (Java Persistence API) é uma sub-biblioteca do Spring
+que oferece uma abordagem simplificada para trabalhar com persistência de dados em aplicações Java.
+
+Ele é uma implementação da JPA, uma especificação padrão da plataforma Java para mapeamento objeto-relacional (ORM)
+
+Precisamos adicionar a configuração do banco de dados no nosso **`application.properties`**
+
+spring.datasource.url=URL_ONDE_ESTÁ_RODANDO_SEU_DB
+spring.datasource.username=NOME_USUARIO
+spring.datasource.password=SENHA

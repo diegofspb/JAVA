@@ -4,9 +4,13 @@ import br.com.aulaSpring.exerciciossb.models.entities.Produto;
 import br.com.aulaSpring.exerciciossb.models.repositories.ProdutoRepository;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.context.config.ConfigDataResourceNotFoundException;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.server.ResponseStatusException;
 
 import java.util.Optional;
 
@@ -27,21 +31,78 @@ public class ProdutoController {
     public @ResponseBody Produto salvarProduto(
             @RequestParam String nome,
             @RequestParam double preco,
-            @RequestParam double desconto
     ){
-        Produto produto = new Produto(nome, preco, desconto);
+        Produto produto = new Produto(nome, preco);
         produtoRepository.save(produto); // produtoRepository olhar explicação na classe ProdutoRepository
         return produto; // retorna o produto criado em formato de json
     }
 
     - a forma correta é no lugar de instanciar um objeto e informar todos os parâmetros, é utilizar puramente o objeto para salvar :
      */
-    @RequestMapping(method = {RequestMethod.POST, RequestMethod.PUT})
-    public @ResponseBody Produto salvarProduto(@Valid Produto produto){  //@Valid obriga os dados que forem inseridos obedeçam as regras de validação
-        // ao utilizar o @Valid e ocorrer um erro, surgirá uma mensagem informando o erro específico que ocorreu, já se você não usar o @Valid o programa quebra
-        produtoRepository.save(produto);
+    @PostMapping("/salvar")
+    public @ResponseBody Produto salvarProduto(@RequestBody @Valid Produto produto) {
+    /*
+      @RequestBody permite que os dados passados via request pela url se transformem diretamente em um Objeto, neste caso é objeto do tipo Produto
+      exemplo:
+            ao utilizar o Postman, envio uma request do tipo 'Post' com os dados de nome+valor, que são os dados para inicar o construtor de Produto
+            ao utilizar o  @RequestBody é a mesma coisa que eu tivesse feito:
+
+                        Produto produto = new Produto(nome, valor);
+
+      @Valid obriga os dados que forem inseridos obedeçe as regras de validação lançadas na model ou classe do Produto
+      ao utilizar o @Valid e ocorrer um erro, surgirá uma mensagem informando o erro específico que ocorreu, já se você não usar o @Valid o programa quebra
+
+     */
+        produtoRepository.save(produto); // save(só aceita um objeto/entidade)
         return produto;
     }
+
+    @PutMapping("/{id}")
+    public Produto alterarProduto(@PathVariable long id, @RequestBody Produto produtoAtualizado){
+
+        // Optional<> é usado para representar uma possível ausência de valor (ou um valor nulo) e é o retorno de '.findById()'
+
+        Optional<Produto> produtoExistenteOptional = produtoRepository.findById(id);
+
+        /*
+            Diferença entre '.findById' e 'getReferenceById':
+                - findById é usado quando você deseja obter uma instância completa da entidade com todos os atributos carregados.
+                - getReference é usado quando você precisa apenas de uma referência à entidade sem carregar todos os atributos.
+
+            O método findById retorna um Optional porque o objeto que você está procurando pode ou não existir no banco de dados.
+            Se o objeto for encontrado, ele será armazenado no Optional, caso contrário, o Optional estará vazio.
+        */
+
+        if (produtoExistenteOptional.isPresent()) {
+
+            /*
+                 Para obter o valor dentro do Optional, você pode usar o método get(),
+                 mas deve fazer isso apenas após verificar se o Optional não está vazio (usando isPresent()).
+                 Isso evita exceções NoSuchElementException que ocorreriam se você tentasse acessar um valor em um Optional vazio.
+            */
+
+            Produto produtoExistente = produtoExistenteOptional.get();
+
+            // Atualize os campos do produto existente com os valores do produto atualizado
+            produtoExistente.setNome((produtoAtualizado.getNome()));
+            produtoExistente.setPreco(produtoAtualizado.getPreco());
+
+            // Salvando o produto atualizado no banco de dados
+            Produto produtoAtualizadoNoBanco = produtoRepository.save(produtoExistente);
+
+            return produtoAtualizadoNoBanco;
+        } else {
+            throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Produto não encontrado com o ID: " + id);
+
+        }
+    }
+    /*
+        @RequestBody é usado antes da declaração Produto produto.
+        Isso significa que o corpo da solicitação PUT deve conter dados que podem ser convertidos em um objeto do tipo Produto.
+        Esses dados normalmente são enviados no formato JSON ou XML,
+        e o Spring Boot usa um mecanismo de desserialização para transformar esses dados no objeto Produto
+    */
+
 
     @GetMapping
     public Iterable<Produto> obterProdutos(){
@@ -68,13 +129,13 @@ public class ProdutoController {
 
 
     @GetMapping(path = "/{id}") // significa que quando for passado uma 'id' na url, então este método será chamado
-    public Optional<Produto> obterProdutoPorId(@PathVariable int id){ // @PathVariable permite que seja utilizado a 'id' passada na url para dentro de 'int id'
+    public Optional<Produto> obterProdutoPorId(@PathVariable long id){ // @PathVariable permite que seja utilizado a 'id' passada na url para dentro de 'long id'
         return produtoRepository.findById(id);
     }
         /*
             interessante, o professor sempre inicia a criação do método com public void
             depois, após utilizar o objeto 'produtoRepository.' após o ponto final, ele verifica a lista disponível de métodos e escolhe o que vai usar
-            nesta lista é possível ver o que o método recebe e o que ele devolve como resposta
+            nesta lista é possível ver o que o método recebe e o que devolve
             neste exemplo o .findById() recebe um id e devolve um Optional<>
             após notar que o .findById() devolve uma interface Optional<>, foi alterado o início do método 'public void' para 'public Opctional<Produto>'
          */
@@ -86,9 +147,11 @@ public class ProdutoController {
 //    }
 
     @DeleteMapping(path = "/{id}")
-    public void excluirProduto(@PathVariable int id){
+    public void excluirProduto(@PathVariable long id){
         produtoRepository.deleteById(id);
     }
+
+
 
 
 }

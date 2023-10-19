@@ -1,0 +1,5 @@
+2) Elabore um código que tenha uma empresa que vende produtos. Podendo ser
+livro , eletrônico ou roupa. Todos eles possuem nome e preço, mas quando existe
+promoção, livros possuem desconto de 10% e eletrônicos, apenas 5% e roupas
+sempre estão com preço fixo. Neste sentido, o preço final de todos os produtos
+dependem do desconto aplicado quando há promoção.

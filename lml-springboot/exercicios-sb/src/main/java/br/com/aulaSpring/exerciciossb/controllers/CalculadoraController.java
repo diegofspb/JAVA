@@ -11,6 +11,7 @@ public class CalculadoraController {
     public int somar(@PathVariable int a, @PathVariable int b){
         return a + b;
     }
+
     // para executar usei a url http://localhost:8080/calculadora/subtrair?b=100&a=130
     @GetMapping("/subtrair")
     public int subtrair(@RequestParam(name="a") int numero1, @RequestParam(name="b") int numero2){

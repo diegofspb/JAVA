@@ -1,0 +1,104 @@
+Migrations são uma técnica importante para gerenciar as mudanças no esquema de banco de dados ao longo do tempo.
+
+O Flyway é uma das várias ferramentas populares para automatizar o processo de migração de banco de dados em aplicativos Spring Boot.
+
+Aqui estão os passos para configurar e usar o Flyway em um projeto Spring Boot:
+
+Passo 1: Adicione a dependência do Flyway
+
+No seu arquivo `pom.xml` (se estiver usando o Maven) ou `build.gradle` (se estiver usando o Gradle), adicione a dependência do Flyway:
+
+Maven:
+
+```xml
+<dependency>
+    <groupId>org.flywaydb</groupId>
+    <artifactId>flyway-core</artifactId>
+</dependency>
+```
+Obs.: adicionar no pom.xml porém o InteliJ não instalou automaticamente, ele deu erro, tive que clicar do lado direito onde tem o 'M' de Maven e atualizei manualmente
+
+Gradle:
+
+```groovy
+implementation 'org.flywaydb:flyway-core'
+```
+
+Passo 2: Configure o Flyway
+
+No arquivo `application.properties` ou `application.yml`, configure as propriedades do Flyway,
+especificando o caminho onde os arquivos de migração serão armazenados. Por exemplo:
+
+`application.properties`:
+
+```properties
+spring.datasource.url=jdbc:your-database-url
+spring.datasource.username=your-username
+spring.datasource.password=your-password
+spring.flyway.locations=classpath:db/migration
+```
+
+No exemplo acima, os arquivos de migração serão armazenados no diretório `src/main/resources/db/migration`.
+Certifique-se de ajustar as propriedades `spring.datasource` com as informações do seu banco de dados.
+
+Passo 3: Crie arquivos de migração
+
+Agora, você pode criar arquivos de migração SQL na pasta especificada (por exemplo, `src/main/resources/db/migration`).
+Esses arquivos devem seguir um nome de arquivo específico, como `V1__Create_table.sql`,
+onde `V1` é a versão da migração e `Create_table` é uma descrição da migração.
+
+O Flyway ordenará e aplicará essas migrações automaticamente na ordem em que foram criadas.
+
+Aqui está um exemplo de um arquivo de migração SQL para criar uma tabela:
+
+`V1__Create_table.sql`:
+
+```sql
+CREATE TABLE pessoas (
+    id INT PRIMARY KEY,
+    nome VARCHAR(255)
+);
+```
+
+Passo 4: Execute as migrações
+
+O Flyway se encarregará de executar as migrações automaticamente quando seu aplicativo Spring Boot for iniciado. Você não precisa chamar nada explicitamente.
+
+Ao iniciar seu aplicativo, o Flyway verificará o banco de dados, aplicará as migrações que ainda não foram aplicadas e manterá o
+controle das migrações já aplicadas em uma tabela especial chamada `flyway_schema_history`.
+
+Certifique-se de que seu aplicativo tenha acesso de leitura/gravação ao banco de dados para que o Flyway possa aplicar as migrações corretamente.
+
+Com esses passos, você configurou o Flyway em seu projeto Spring Boot para gerenciar automaticamente as migrações do banco de dados.
+À medida que você cria novos arquivos de migração para fazer alterações no esquema do banco de dados, o Flyway se encarregará de aplicá-los na ordem correta.
+
+- Propriedades de configuração do Flyway:
+
+    Flyway possui várias propriedades de configuração que você pode definir no application.propertiesarquivo.
+    Aqui estão alguns dos mais importantes:
+
+flyway.baselineOnMigrate:
+
+    se definido como true, o Flyway criará automaticamente a linha de base para seu banco de dados quando você executar a migração.
+    Isso é útil se você estiver começando do zero e não tiver nenhum banco de dados existente.
+
+flyway.locations:
+
+    esta propriedade especifica os locais onde o Flyway deve procurar os scripts de migração.
+    Por padrão, o Flyway irá procurá-los no classpath:db/migrationdiretório, mas você pode especificar um local diferente, se necessário.
+
+flyway.schemas:
+
+    esta propriedade especifica os esquemas que o Flyway deve gerenciar.
+    Você pode especificar um único esquema ou vários esquemas separados por vírgulas.
+
+Por exemplo, para configurar a locationspropriedade para um diretório diferente e a schemaspropriedade para um único esquema, você pode adicionar o seguinte ao aplicativo.
+Arquivo de propriedades:
+
+flyway.locations=sistema de arquivos:/migrações
+flyway. Esquemas=meu_esquema
+
+
+Em seguida, você pode executar o seguinte comando para aplicar as migrações pendentes:
+
+mvn flyway:migrar
