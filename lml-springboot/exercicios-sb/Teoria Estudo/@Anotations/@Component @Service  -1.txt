@@ -1,0 +1,84 @@
+
+No contexto do Spring Boot, `@Component` e `@Service` são duas das várias anotações que o framework oferece para gerenciar componentes em uma aplicação,
+como também => @Repository e @Controller .
+
+Essas anotações são usadas para definir classes como componentes gerenciados pelo Spring, permitindo:
+
+		- injeção de dependências;
+		- Escaneamento automático de classes e outras funcionalidades. 
+		
+Vou explicar cada uma delas em detalhes e fornecer exemplos para ilustrar seu uso.
+
+**@Component**:
+
+`@Component` é a anotação mais genérica para registrar uma classe como um componente gerenciado pelo Spring. 
+Ela é usada para qualquer classe que você deseja que o Spring reconheça componente gerenciado, ou em outras palavras um bean.
+ 
+Um "bean" é um objeto gerenciado pelo contêiner Spring, exemplo: @Component, @Service, @Repository e @Controller
+
+Isso significa que o Spring irá criar instâncias dessas classes, gerenciar seu ciclo de vida e permitir a injeção de dependências.
+
+Exemplo:
+
+```java
+@Component
+public class MyComponent {
+    // Lógica da classe
+}
+```
+
+Neste exemplo, a classe `MyComponent` é marcada com `@Component`, o que significa que o Spring a registrará como um bean e 
+a tornará disponível para injeção de dependências em outras partes do código.
+
+**@Service**:
+
+`@Service` é uma especialização de `@Component` e é usada para classes que desempenham um papel de serviço em sua aplicação. 
+É uma prática recomendada nomear suas classes de serviço com `@Service` para melhorar a semântica do código, tornando-o mais claro 
+para outros desenvolvedores que essas classes desempenham funções de serviço específicas.
+
+Exemplo:
+
+```java
+@Service
+public class UserService {
+    // Lógica de serviço para gerenciar usuários
+}
+```
+
+Aqui, a classe `UserService` é um serviço para gerenciar operações relacionadas a usuários em uma aplicação. 
+Usar `@Service` ajuda a identificar o propósito da classe e facilita a manutenção e a compreensão do código.
+
+**Injeção de Dependências**:
+
+Ambas as anotações, `@Component` e `@Service`, permitem a injeção de dependências. 
+Por exemplo, você pode injetar um componente ou serviço em outra classe da seguinte maneira:
+
+```java
+@Component
+public class MyComponent {
+    // Lógica da classe
+}
+
+@Service
+public class MyService {
+
+	// aqui foi apenas criado um atributo do tipo Mycomponent com nome myComponent
+    private final MyComponent myComponent;
+
+	// aqui efetivamente o @Autowired está injetando a dependência
+    @Autowired
+    public MyService(MyComponent myComponent) {
+        this.myComponent = myComponent;
+    }
+
+    // Lógica do serviço que utiliza MyComponent
+}
+```
+
+Neste exemplo, `MyService` está injetando uma instância de `MyComponent` usando a anotação `@Autowired`.
+
+Em resumo, `@Component` é uma anotação genérica usada para marcar classes como componentes Spring, 
+enquanto `@Service` é uma anotação mais específica usada para classes que desempenham funções de serviço em sua aplicação. 
+
+Ambas as anotações são usadas para criar beans gerenciados pelo Spring, permitindo a injeção de dependências e outras funcionalidades de gerenciamento de componentes. 
+A escolha entre `@Component` e `@Service` deve ser baseada na semântica e no propósito da classe em sua aplicação.

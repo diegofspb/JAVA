@@ -1,0 +1,54 @@
+Claro! O Java 16 introduziu uma nova feature chamada "Records" (Registros) por meio do JEP 395. Registros são uma adição importante ao Java que simplifica a criação de classes que servem principalmente para armazenar dados, como representações de entidades de negócios ou valores imutáveis. Eles fornecem uma maneira mais concisa de declarar classes imutáveis, reduzindo a necessidade de escrever muito código boilerplate.
+
+Vou explicar Records com um exemplo prático:
+
+Suponha que você esteja desenvolvendo um aplicativo para gerenciar informações de alunos, incluindo seus nomes e números de identificação.
+Sem Records, você precisaria criar uma classe tradicional com campos, construtores, métodos `get`, `equals`, `hashCode` e `toString`.
+Com Records, essa tarefa se torna muito mais simples.
+
+Aqui está como você pode definir uma classe de aluno usando Records:
+
+
+public record Aluno(String nome, int numeroDeIdentificacao) {
+    // Nenhum campo adicional é necessário
+}
+
+
+Neste exemplo, a classe `Aluno` é definida como um Record.
+O que acontece nos bastidores é que o compilador Java automaticamente cria os seguintes elementos:
+
+1. Campos:
+
+    Um campo para cada componente do registro (no nosso caso, `nome` e `numeroDeIdentificacao`).
+
+2. Construtor:
+
+    Um construtor que aceita argumentos para inicializar os campos. Você pode criar uma instância de `Aluno` da seguinte forma:
+
+                                    Aluno aluno1 = new Aluno("Alice", 12345);
+                                    Aluno aluno2 = new Aluno("Bob", 54321);
+
+3. Métodos `equals`, `hashCode` e `toString`:
+
+    Esses métodos são gerados automaticamente e implementam a igualdade, o cálculo do hash e a representação de string do registro.
+
+Você pode usar essas instâncias de Record como faria com qualquer outra classe:
+
+
+System.out.println(aluno1.nome()); // Alice
+System.out.println(aluno2.numeroDeIdentificacao()); // 54321
+System.out.println(aluno1.equals(aluno2)); // false
+
+
+Os Records são imutáveis por padrão, o que significa que, uma vez criados, seus valores não podem ser alterados.
+Isso é uma característica importante, pois ajuda a evitar erros e facilita a programação defensiva.
+
+Além disso, se você deseja criar uma nova instância do Record com valores atualizados,
+o compilador gera automaticamente um método `with` que permite fazer isso:
+
+
+Aluno aluno3 = aluno1.withNumeroDeIdentificacao(99999);
+
+
+Este é um exemplo prático da simplificação que os Records trazem para a criação de classes de dados em Java, economizando tempo e
+tornando o código mais legível. Eles são especialmente úteis em situações em que você precisa de classes de dados simples e imutáveis.

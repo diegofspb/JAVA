@@ -19,7 +19,7 @@ public interface ProdutoRepository extends JpaRepository<Produto, Long> {
             findByNomeIsContaining
             findByNomeContains
 
-            findByNomeStartWith
+            findByNomeStartWith\/
             findByNomeEndsWith
             findByNomeNotContaining
      */

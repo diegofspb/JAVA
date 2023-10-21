@@ -40,7 +40,8 @@ public class ProdutoController {
     - a forma correta é no lugar de instanciar um objeto e informar todos os parâmetros, é utilizar puramente o objeto para salvar :
      */
     @PostMapping("/salvar")
-    public @ResponseBody Produto salvarProduto(@RequestBody @Valid Produto produto) {
+//    public @ResponseBody Produto salvarProduto(@RequestBody @Valid Produto produto) { // retorna uma respsta padrão, ou seja 200
+        public ResponseEntity<Produto>  salvarProduto(@RequestBody @Valid Produto produto) { //usando ResponseEntity é possível personalizar o return
     /*
       @RequestBody permite que os dados passados via request pela url se transformem diretamente em um Objeto, neste caso é objeto do tipo Produto
       exemplo:
@@ -54,7 +55,8 @@ public class ProdutoController {
 
      */
         produtoRepository.save(produto); // save(só aceita um objeto/entidade)
-        return produto;
+//        return produto; ou:
+        return ResponseEntity.status(HttpStatus.CREATED).body(produto);
     }
 
     @PutMapping("/{id}")
